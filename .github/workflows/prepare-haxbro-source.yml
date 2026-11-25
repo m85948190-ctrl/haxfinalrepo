@@ -1,0 +1,44 @@
+name: Prepare HAxBRO source for Hatchable import
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/prepare-haxbro-source.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify and extract original source archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          archive="haxbro-ai-oybr-code-20261124-1035.zip"
+          test -f "$archive"
+          unzip -t "$archive"
+          mkdir -p transfer
+          unzip -oq "$archive" -d transfer
+          test -f transfer/hatchable.toml
+          test -d transfer/api
+          test -d transfer/public
+          echo "Extracted $(find transfer -type f | wc -l) files"
+      - name: Commit extracted source without changing original ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add transfer/
+          if git diff --cached --quiet; then
+            echo "No extracted source changes to commit."
+          else
+            git commit -m "Prepare extracted HAxBRO source for deployment"
+            git push
+          fi
