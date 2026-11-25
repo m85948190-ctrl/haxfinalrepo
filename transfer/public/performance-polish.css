@@ -1,0 +1,18 @@
+/* HAxBRO performance and product polish */
+#haxbroCinematicIntro .hci-video{display:none!important}
+.hfs-skip{min-height:34px;padding:0 13px;border:1px solid rgba(125,232,255,.3);border-radius:999px;background:rgba(5,18,30,.72);color:#bfefff;font:800 9px/1 system-ui,sans-serif;letter-spacing:.12em;cursor:pointer}
+.hfs-skip:hover,.hfs-skip:focus-visible{border-color:#75e9ff;background:rgba(10,45,65,.9);outline:2px solid rgba(117,233,255,.25);outline-offset:2px}
+.hax-modern .messages{overscroll-behavior:contain}
+.hax-modern .sidebar,.hax-modern .chat-panel{min-width:0}
+.hax-modern .maker-link{min-height:40px}
+@media(max-width:760px){
+  #haxbroCinematicIntro .hci-video,.hero-3d .haxbro-landing-ambient-video{display:none!important}
+  .hax-modern .topbar,.hax-modern .chat-head,.hax-modern .composer,.kai51-boot-stamp{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .hax-modern .hero-welcome:before{animation:none!important}
+  .hax-modern .sidebar{box-shadow:none!important}
+  .hax-modern .app-shell{min-height:calc(100dvh - 64px)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  video{display:none!important}
+}

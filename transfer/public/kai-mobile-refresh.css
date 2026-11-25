@@ -1,0 +1,86 @@
+/* KAI companion refresh + phone-first layout fixes. */
+.kai-companion{position:relative;display:flex;flex-direction:column;gap:8px;min-height:0;padding:11px;border:1px solid #d9dde3;border-radius:16px;background:#fff;color:#111;overflow:hidden}
+.kai-companion:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(45,116,190,.07),transparent 68%)}
+.kai-companion-head,.kai-companion-status{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.kai-companion-brand{font:800 10px/1.2 system-ui,sans-serif;letter-spacing:.12em;color:#252a32}
+.kai-companion-brand b{font-weight:900}
+.kai-companion-online{display:flex;align-items:center;gap:5px;font:750 8px/1 ui-monospace,monospace;letter-spacing:.08em;color:#555}
+.kai-companion-online i{width:6px;height:6px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #eceef1}
+.kai-avatar-stage{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;height:142px;min-height:142px;overflow:hidden;border-radius:12px;background:linear-gradient(180deg,#f7f8fa,#eef0f3)}
+.kai-bot-orbit{position:absolute;width:112px;height:112px;border:1px solid rgba(65,80,99,.18);border-radius:50%;box-shadow:0 0 0 9px rgba(65,80,99,.035)}
+.kai-bot-orbit:before,.kai-bot-orbit:after{content:"";position:absolute;inset:9px;border:1px dashed rgba(65,80,99,.2);border-radius:50%;animation:kaiBotOrbit 16s linear infinite}
+.kai-bot-orbit:after{inset:-8px;border-style:solid;border-color:transparent rgba(65,80,99,.28) transparent transparent;animation-duration:11s}
+.kai-robot-art{position:relative;z-index:2;width:142px;height:150px;overflow:visible;filter:drop-shadow(0 7px 5px rgba(12,18,28,.13));animation:kaiBotFloat 3.8s ease-in-out infinite}
+.kai-bot-head{transform-origin:90px 94px;animation:kaiBotLook 7s ease-in-out infinite}
+.kai-bot-body{transform-origin:90px 140px;animation:kaiBotBreath 3.8s ease-in-out infinite}
+.kai-bot-arm-left,.kai-bot-arm-right{transform-box:fill-box;transform-origin:50% 18%;transition:transform .35s ease}
+.kai-bot-eyes{transform-origin:center;animation:kaiBotBlink 5.4s infinite}
+.kai-companion-status{padding:1px 2px 0}
+.kai-companion-action{font:800 9px/1.3 system-ui,sans-serif;letter-spacing:.08em;color:#171a20;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kai-companion-detail{font:650 8px/1.3 ui-monospace,monospace;color:#686f79;white-space:nowrap}
+.kai-companion[data-state="thinking"] .kai-bot-head{animation:kaiBotThink 1.4s ease-in-out infinite alternate}
+.kai-companion[data-state="searching"] .kai-bot-arm-left{animation:kaiBotType .32s ease-in-out infinite alternate}
+.kai-companion[data-state="searching"] .kai-bot-arm-right{animation:kaiBotType .32s ease-in-out infinite alternate-reverse}
+.kai-companion[data-state="reading"] .kai-bot-head{transform:rotate(-6deg)}
+.kai-companion[data-state="coding"] .kai-bot-arm-left,.kai-companion[data-state="coding"] .kai-bot-arm-right{animation:kaiBotType .24s ease-in-out infinite alternate}
+.kai-companion[data-state="building"] .kai-bot-arm-left{animation:kaiBotBuild .7s ease-in-out infinite}
+.kai-companion[data-state="building"] .kai-bot-arm-right{animation:kaiBotBuild .7s ease-in-out infinite reverse}
+.kai-companion[data-state="completed"] .kai-bot-arm-left{animation:kaiBotCelebrate .55s ease-in-out 3}
+.kai-companion[data-state="completed"] .kai-bot-arm-right{animation:kaiBotCelebrate .55s ease-in-out 3 reverse}
+.kai-companion[data-state="error"] .kai-bot-head{transform:rotate(-4deg)}
+@keyframes kaiBotFloat{0%,100%{transform:translateY(1px)}50%{transform:translateY(-4px)}}
+@keyframes kaiBotBreath{0%,100%{transform:translateY(0)}50%{transform:translateY(1.8px)}}
+@keyframes kaiBotLook{0%,75%,100%{transform:rotate(0)}82%{transform:rotate(4deg)}90%{transform:rotate(-3deg)}}
+@keyframes kaiBotBlink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.12)}}
+@keyframes kaiBotOrbit{to{transform:rotate(360deg)}}
+@keyframes kaiBotThink{from{transform:rotate(-2deg)}to{transform:rotate(5deg)}}
+@keyframes kaiBotType{from{transform:rotate(-14deg)}to{transform:rotate(18deg)}}
+@keyframes kaiBotBuild{0%,100%{transform:rotate(12deg)}50%{transform:rotate(-26deg)}}
+@keyframes kaiBotCelebrate{0%,100%{transform:rotate(10deg)}50%{transform:rotate(-52deg)}}
+@media(prefers-reduced-motion:reduce){.kai-robot-art,.kai-bot-orbit:before,.kai-bot-orbit:after,.kai-bot-head,.kai-bot-body,.kai-bot-eyes,.kai-companion [class*=kai-bot-arm]{animation:none!important;transition:none!important}}
+@media(max-width:760px){
+ .kai-sidebar-avatar-mobile-mount{margin:0 0 10px!important}
+ .kai-companion{display:grid;grid-template-columns:106px minmax(0,1fr);grid-template-areas:"head head" "stage status";gap:6px 10px;padding:8px;border-radius:13px}
+ .kai-companion-head{grid-area:head}
+ .kai-avatar-stage{grid-area:stage;height:94px;min-height:94px}
+ .kai-bot-orbit{width:74px;height:74px}
+ .kai-robot-art{width:92px;height:98px}
+ .kai-companion-status{grid-area:status;align-self:center;min-width:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px}
+ .kai-companion-action{white-space:normal;line-height:1.35}
+ .kai-companion-detail{white-space:normal}
+}
+@media(max-width:760px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+ body.hax-modern{min-width:0!important;width:100%!important;height:100%;min-height:100dvh;overflow:hidden!important}
+ body.hax-modern .topbar{height:56px!important;min-height:56px!important;width:100%!important;max-width:100vw!important;padding:0 12px 0 58px!important;justify-content:center!important}
+ body.hax-modern .top-center,body.hax-modern .top-actions{display:none!important}
+ body.hax-modern .brand{max-width:calc(100vw - 80px)!important;min-width:0!important;margin:0 auto!important}
+ body.hax-modern .brand strong{font-size:17px!important}
+ body.hax-modern .app-shell{display:flex!important;width:100%!important;max-width:100vw!important;min-width:0!important;height:calc(100dvh - 56px)!important;max-height:calc(100dvh - 56px)!important;min-height:0!important;margin:0!important;overflow:hidden!important}
+ body.hax-modern .sidebar{display:none!important}
+ body.hax-modern .chat-panel{display:flex!important;flex:1 1 auto!important;width:100%!important;max-width:100%!important;min-width:0!important;height:100%!important;min-height:0!important;overflow:hidden!important;padding-bottom:0!important}
+ body.hax-modern .chat-head{flex:0 0 auto!important;min-height:42px!important;padding:8px 12px!important}
+ body.hax-modern .messages{flex:1 1 auto!important;min-height:0!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;padding:12px 10px 180px!important;-webkit-overflow-scrolling:touch}
+ body.hax-modern .composer{position:fixed!important;left:8px!important;right:8px!important;bottom:calc(8px + env(safe-area-inset-bottom,0px) + var(--hb-keyboard-inset,0px))!important;width:auto!important;max-width:none!important;min-width:0!important;box-sizing:border-box!important;z-index:40!important;margin:0!important;padding:8px!important;gap:6px!important}
+ body.hax-modern .composer .input-wrap{min-width:0!important;flex:1 1 auto!important}
+ body.hax-modern #promptInput{min-width:0!important;width:100%!important;font-size:16px!important;line-height:1.4!important;max-height:120px!important}
+ body.hax-modern .composer button{min-width:42px!important;min-height:42px!important;touch-action:manipulation}
+ body.hax-modern .hint{flex:0 0 auto!important;padding:4px 10px calc(4px + env(safe-area-inset-bottom))!important;font-size:10px!important}
+ body.hax-modern #menuBtn.mobile-menu{display:flex!important;align-items:center!important;justify-content:center!important;position:fixed!important;z-index:85!important;top:7px!important;left:8px!important;width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;background:#fff!important;color:#111!important;border:1px solid #ddd!important;border-radius:10px!important}
+ body.hax-modern #kaiLogBtn{position:fixed!important;z-index:64!important;top:12px!important;right:10px!important}
+ body.hax-modern #mobileDrawer{position:fixed!important;z-index:80!important;inset:0!important;width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;overflow:hidden!important}
+ body.hax-modern .mobile-drawer-content{height:calc(100dvh - 56px)!important;max-height:calc(100dvh - 56px)!important;min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;padding:10px 12px calc(24px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch}
+ body.hax-modern .mobile-drawer-content section,body.hax-modern .mobile-settings{min-width:0!important;max-width:100%!important}
+ body.hax-modern .mobile-drawer-content button,body.hax-modern .mobile-drawer-content a{min-height:44px!important;touch-action:manipulation}
+ body.hax-modern .mode-buttons{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+ body.hax-modern .mode-btn{min-width:0!important;padding:9px 4px!important;font-size:10px!important}
+ body.hax-modern .haxbro-mode-dock,body.hax-modern .haxbro-mode-capsule{max-width:100%!important;overflow-x:auto!important}
+ body.hax-modern .install-card,body.hax-modern .modal-card,body.hax-modern [role=dialog]{width:calc(100vw - 24px)!important;max-width:calc(100vw - 24px)!important;max-height:calc(100dvh - 24px)!important;overflow:auto!important;box-sizing:border-box!important}
+ body.hax-modern input,body.hax-modern textarea,body.hax-modern select{font-size:16px!important}
+}
+@media(max-width:390px){
+ body.hax-modern .composer{left:6px!important;right:6px!important;padding:6px!important}
+ body.hax-modern .composer button{min-width:38px!important;min-height:42px!important}
+ body.hax-modern .hero-welcome h1{font-size:23px!important}
+ body.hax-modern .hero-capabilities{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}

@@ -1,0 +1,322 @@
+#haxNewAppMaker{position:fixed;inset:0;z-index:2147483640;display:none;overflow:hidden;background:#05040b;color:#eeeef8;font-family:Inter,ui-sans-serif,system-ui,sans-serif}#haxNewAppMaker.open{display:block}.ham-atmos{position:absolute;inset:0;pointer-events:none;overflow:hidden;background:radial-gradient(circle at 62% 44%,#24124c 0,#0b0718 28%,#05040b 67%)}.ham-orbit{position:absolute;left:58%;top:48%;width:min(780px,72vw);height:min(300px,28vw);border:1px solid #775cff32;border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);animation:hamSpin 18s linear infinite}.ham-orbit.b{width:min(650px,60vw);height:min(240px,23vw);border-color:#43d8ff28;transform:translate(-50%,-50%) rotate(42deg);animation-duration:24s}.ham-orbit.c{width:min(920px,82vw);height:min(360px,34vw);border-color:#bd6dff18;transform:translate(-50%,-50%) rotate(76deg);animation-duration:31s}.ham-proton{position:absolute;left:58%;top:48%;width:190px;height:190px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#f4efff 0,#9671ff 5%,#5427b0 20%,transparent 67%);filter:blur(7px);opacity:.22;animation:hamPulse 3.2s ease-in-out infinite}.ham-proton:before,.ham-proton:after{content:"";position:absolute;inset:28px;border:1px solid #66dcff44;border-radius:50%;transform:rotate(50deg)}.ham-proton:after{inset:52px;border-color:#b077ff55;transform:rotate(-35deg)}@keyframes hamSpin{to{transform:translate(-50%,-50%) rotate(342deg)}}@keyframes hamPulse{50%{transform:translate(-50%,-50%) scale(1.2);opacity:.3}}.ham-head{height:68px;position:relative;z-index:5;display:flex;align-items:center;gap:14px;padding:0 18px;border-bottom:1px solid #fff1;background:#07060dea;backdrop-filter:blur(20px)}.ham-close,.ham-new{border:1px solid #fff1;background:#ffffff07;color:#aaa6b8;border-radius:10px;padding:9px 12px;cursor:pointer}.ham-close{font-size:22px;width:38px;height:38px}.ham-brand{display:flex;align-items:center;gap:10px}.ham-brand>span{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#7a55ff,#35caff);font-weight:900;font-size:11px;box-shadow:0 0 24px #7555ff44}.ham-brand b{display:block;font-size:11px;letter-spacing:.13em}.ham-brand small{display:block;margin-top:3px;color:#686477;font-size:8px;letter-spacing:.12em}.ham-online{margin-left:auto;color:#8e8a9e;font-size:9px;letter-spacing:.12em}.ham-online i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6be0ff;box-shadow:0 0 12px #6be0ff;margin-right:7px}.ham-layout{height:calc(100% - 68px);display:flex;position:relative;z-index:2}.ham-rail{width:210px;flex:0 0 210px;padding:25px 14px;border-right:1px solid #fff1;background:#07060de8;backdrop-filter:blur(20px);overflow:auto}.ham-rail>small{display:block;color:#605c6e;font-size:8px;letter-spacing:.2em;margin:0 8px 14px}.ham-rail button{width:100%;display:flex;align-items:center;gap:12px;border:1px solid transparent;background:transparent;color:#686475;border-radius:10px;padding:12px 10px;text-align:left;cursor:pointer}.ham-rail button b{font:9px ui-monospace;color:#4f4b5d}.ham-rail button span{font-size:11px;font-weight:750}.ham-rail button.active{background:#ffffff07;border-color:#805cff25;color:#eeeaf8}.ham-rail button.active b{color:#9c83ff}.ham-engine{margin-top:24px;padding:13px;border:1px solid #fff1;border-radius:13px;background:#ffffff04;display:grid;grid-template-columns:10px 1fr}.ham-engine i{width:6px;height:6px;border-radius:50%;background:#61dcff;box-shadow:0 0 12px #61dcff;margin-top:3px}.ham-engine b{font-size:9px}.ham-engine span{grid-column:2;color:#5d596a;font-size:8px;margin-top:4px}.ham-main{flex:1;min-width:0;overflow:auto}.ham-hero{width:min(980px,90%);min-height:calc(100% - 1px);margin:auto;display:flex;flex-direction:column;justify-content:center;padding:42px 0}.ham-kicker{color:#8d7cff;font-size:9px;letter-spacing:.2em}.ham-hero h1{max-width:800px;font-size:clamp(40px,6vw,78px);line-height:.98;letter-spacing:-.06em;margin:12px 0;font-weight:820}.ham-hero h1 em{font-style:normal;background:linear-gradient(90deg,#9c7bff,#63ddff);-webkit-background-clip:text;background-clip:text;color:transparent}.ham-hero p{max-width:680px;color:#7f7a8d;font-size:14px;line-height:1.7}.ham-input{margin-top:28px;border:1px solid #fff2;border-radius:20px;background:#080711e8;box-shadow:0 30px 100px #0008;backdrop-filter:blur(20px);overflow:hidden}.ham-input-top,.ham-input-bottom{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;color:#5f5a6b;font-size:8px;letter-spacing:.13em}.ham-input textarea{display:block;width:100%;min-height:150px;resize:vertical;border:0;border-top:1px solid #fff0;border-bottom:1px solid #fff1;background:transparent;color:#eeeaf7;outline:0;padding:18px;font:14px/1.6 system-ui}.ham-chips{display:flex;gap:6px;flex-wrap:wrap}.ham-chips button,.ham-canvas-head button{border:1px solid #fff1;background:#ffffff05;color:#777283;border-radius:999px;padding:8px 10px;font-size:8px;cursor:pointer}.ham-build{border:0;border-radius:10px;padding:12px 15px;background:linear-gradient(135deg,#805cff,#3acfff);color:#08060e;font-size:9px;font-weight:900;cursor:pointer;white-space:nowrap}.ham-build b{margin-left:8px}.ham-building{width:min(800px,90%);margin:auto;padding-top:12vh}.ham-reactor{height:230px;position:relative;display:grid;place-items:center}.ham-reactor:before,.ham-reactor:after{content:"";position:absolute;width:180px;height:70px;border:1px solid #8a68ff44;border-radius:50%;transform:rotate(22deg);animation:hamSpin 4s linear infinite}.ham-reactor:after{width:130px;height:190px;border-color:#50dcff38;transform:rotate(-35deg);animation-duration:6s}.ham-reactor div{width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,#fff,#a77dff 8%,#4d25a7 38%,transparent 70%);box-shadow:0 0 70px #8c67ff88;animation:hamPulse 2.3s infinite}.ham-build-title{text-align:center}.ham-build-title span{font-size:9px;color:#9a80ff;letter-spacing:.2em}.ham-build-title h2{font-size:25px;margin:8px 0}.ham-build-title p{color:#706b7e;font-size:12px}.ham-log{margin-top:22px;border:1px solid #fff1;border-radius:14px;background:#07060caa;max-height:230px;overflow:auto}.ham-log-row{padding:9px 12px;border-bottom:1px solid #fff1;color:#777282;font:10px ui-monospace,monospace}.ham-log-row span{color:#4d4859;margin-right:12px}.ham-log-row.ok{color:#71dfff}.ham-log-row.error{color:#ff769a}.ham-product{padding:22px;max-width:1500px;margin:auto}.ham-product-head{display:flex;align-items:flex-end;gap:18px;margin-bottom:14px}.ham-product-head small{color:#686273;font-size:8px;letter-spacing:.18em}.ham-product-head h2{margin:5px 0;font-size:25px}.ham-product-head p{margin:0;color:#716d7d;font-size:11px}.ham-product-actions{margin-left:auto;display:flex;gap:6px;align-items:center}.ham-product-actions span,.ham-product-actions button{font-size:8px;letter-spacing:.08em}.ham-product-actions span{color:#8d7eff}.ham-product-actions button{border:1px solid #fff1;background:#ffffff06;color:#9a95a6;padding:9px 10px;border-radius:9px;cursor:pointer}.ham-product-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:10px}.ham-canvas,.ham-files{border:1px solid #fff1;border-radius:16px;background:#08070e;overflow:hidden}.ham-canvas{min-height:65vh;display:flex;flex-direction:column}.ham-canvas-head{height:45px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;border-bottom:1px solid #fff1}.ham-canvas-head span{font-size:8px;color:#777282;letter-spacing:.14em}.ham-canvas-head span i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#6be0ff;box-shadow:0 0 10px #6be0ff;margin-right:6px}.ham-canvas-head div{display:flex;gap:4px}.ham-canvas-head button{padding:7px 9px;border-radius:7px}.ham-canvas-head button.active{background:#fff1;color:#e8e3f2}.ham-canvas iframe{flex:1;width:100%;min-height:60vh;border:0;background:#fff}.ham-canvas iframe.phone{width:390px;max-width:calc(100% - 24px);height:700px;min-height:0;align-self:center;margin:12px;border:8px solid #15131e;border-radius:25px;box-shadow:0 20px 60px #0009}.ham-tabs{display:flex;border-bottom:1px solid #fff1}.ham-tabs button{flex:1;padding:12px;border:0;background:transparent;color:#666173;font-size:8px;letter-spacing:.12em;cursor:pointer}.ham-tabs button.active{color:#ddd8e8;background:#fff1}.ham-file{display:grid;grid-template-columns:18px 1fr auto;width:100%;gap:7px;padding:11px;border:0;border-bottom:1px solid #fff1;background:transparent;color:#827d8d;text-align:left;cursor:pointer}.ham-file.active{background:#765cff0c;color:#e6e1ee}.ham-file b{color:#9176ff}.ham-file span{font-size:10px}.ham-file small{font-size:8px;color:#4f4a59}.ham-code-head{display:flex;align-items:center;justify-content:space-between;padding:8px;border-bottom:1px solid #fff1}.ham-code-head span{font:9px ui-monospace;color:#858092}.ham-code-head button{font-size:8px;padding:6px;border:1px solid #fff1;background:#fff1;color:#aaa5b4;border-radius:7px}.ham-files textarea{width:100%;height:56vh;border:0;outline:0;resize:none;background:#05040a;color:#b9ecff;padding:11px;font:10px/1.55 ui-monospace,monospace}.ham-evolve{display:flex;gap:10px;align-items:center;margin-top:10px;padding:11px;border:1px solid #fff1;border-radius:14px;background:#08070e}.ham-evolve div{min-width:155px}.ham-evolve small{display:block;color:#676273;font-size:8px;letter-spacing:.14em}.ham-evolve b{display:block;font-size:10px;margin-top:4px}.ham-evolve textarea{flex:1;min-width:0;resize:none;border:1px solid #fff1;border-radius:9px;background:#05040a;color:#eeeaf5;padding:10px;font:11px/1.4 system-ui;outline:0}.ham-evolve button{border:0;border-radius:9px;padding:11px 13px;background:linear-gradient(135deg,#805cff,#3acfff);color:#08060e;font-weight:900;font-size:8px;cursor:pointer;white-space:nowrap}.ham-check{display:flex;align-items:center;gap:8px;margin-top:8px;color:#5d5968;font-size:8px;letter-spacing:.08em}.ham-check b{color:#9690a1;font-weight:500}.ham-check i{width:6px;height:6px;border-radius:50%;background:#68ddff;box-shadow:0 0 10px #68ddff}@media(max-width:850px){.ham-rail{display:none}.ham-hero{width:94%}.ham-product{padding:12px}.ham-product-grid{grid-template-columns:1fr}.ham-product-head{flex-direction:column;align-items:flex-start}.ham-product-actions{margin-left:0;flex-wrap:wrap}.ham-evolve{flex-direction:column;align-items:stretch}.ham-evolve button{width:100%}.ham-atmos{background:radial-gradient(circle at 60% 35%,#26104d 0,#090714 34%,#05040b 72%)}}@media(max-width:560px){.ham-head{height:60px;padding:0 9px}.ham-brand small{display:none}.ham-brand b{font-size:9px}.ham-online{font-size:7px}.ham-new{display:none}.ham-hero{min-height:calc(100% - 1px);padding:25px 0}.ham-hero h1{font-size:43px}.ham-hero p{font-size:12px}.ham-input textarea{min-height:175px}.ham-input-bottom{flex-direction:column;gap:10px;align-items:stretch}.ham-chips{justify-content:center}.ham-build{width:100%;min-height:46px}.ham-building{width:94%;padding-top:7vh}.ham-product-head h2{font-size:21px}.ham-product-actions button{padding:8px}.ham-canvas iframe.phone{width:calc(100% - 16px);margin:8px}.ham-evolve{padding:10px}}
+
+/* HAxBRO KAI 2.4 — SIDEBAR TYPOGRAPHY / NO-CUT PATCH */
+#haxNewAppMaker .ham-rail{width:280px!important;flex:0 0 280px!important;box-sizing:border-box!important;overflow-x:hidden!important;overflow-y:auto!important;padding-left:16px!important;padding-right:16px!important}
+#haxNewAppMaker .ham-rail button{box-sizing:border-box!important;width:100%!important;min-width:0!important;display:flex!important;align-items:center!important;gap:10px!important;overflow:visible!important;white-space:normal!important;text-overflow:clip!important}
+#haxNewAppMaker .ham-rail button span,#haxNewAppMaker .ham-rail button b{min-width:0!important;overflow:visible!important;text-overflow:clip!important;white-space:normal!important;word-break:normal!important;overflow-wrap:normal!important;line-height:1.25!important}
+#haxNewAppMaker .ham-rail button span{flex:1 1 auto!important}
+#haxNewAppMaker .ham-rail button b{flex:0 0 auto!important}
+#haxNewAppMaker .ham-engine{box-sizing:border-box!important;width:100%!important;min-width:0!important}
+#haxNewAppMaker .ham-engine b,#haxNewAppMaker .ham-engine span{min-width:0!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;word-break:normal!important;overflow-wrap:anywhere!important;line-height:1.3!important}
+@media(max-width:850px){#haxNewAppMaker .ham-rail{width:280px!important;flex-basis:280px!important}}
+
+/* HAxBRO KAI 2.0 — SHARP PRODUCT MAKER SYSTEM */
+#haxNewAppMaker{background:#07090c!important;color:#eef3f7!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important}
+#haxNewAppMaker .ham-atmos{background:#07090c!important}
+#haxNewAppMaker .ham-atmos:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.35),transparent 70%)}
+#haxNewAppMaker .ham-orbit{border-color:rgba(90,205,255,.20)!important;opacity:.65}
+#haxNewAppMaker .ham-orbit.b{border-color:rgba(133,105,255,.24)!important}
+#haxNewAppMaker .ham-orbit.c{border-color:rgba(255,255,255,.08)!important}
+#haxNewAppMaker .ham-proton{background:#07090c!important;filter:none!important;opacity:1!important;width:170px;height:170px;box-shadow:0 0 0 1px rgba(117,91,255,.28),0 0 70px rgba(72,180,255,.16)}
+#haxNewAppMaker .ham-proton:before{inset:24px!important;border-color:rgba(91,215,255,.42)!important}
+#haxNewAppMaker .ham-proton:after{inset:47px!important;border-color:rgba(143,108,255,.55)!important}
+#haxNewAppMaker .ham-head{height:64px!important;background:#090b0e!important;border-bottom:1px solid #20262d!important;backdrop-filter:none!important}
+#haxNewAppMaker .ham-brand>span{background:#11151a!important;border:1px solid #34404a!important;box-shadow:none!important;color:#b9eaff}
+#haxNewAppMaker .ham-online{color:#9ba8b3!important}
+#haxNewAppMaker .ham-online i{background:#76dfff!important;box-shadow:0 0 8px rgba(118,223,255,.5)!important}
+#haxNewAppMaker .ham-close,#haxNewAppMaker .ham-new{background:#0e1216!important;border:1px solid #2b333b!important;color:#d5dde4!important;border-radius:7px!important;box-shadow:none!important}
+#haxNewAppMaker .ham-close:hover,#haxNewAppMaker .ham-new:hover{background:#151a20!important;border-color:#46515c!important}
+#haxNewAppMaker .ham-layout{height:calc(100% - 64px)!important}
+#haxNewAppMaker .ham-rail{width:230px!important;flex-basis:230px!important;background:#090b0e!important;border-right:1px solid #20262d!important;backdrop-filter:none!important;padding:28px 16px!important}
+#haxNewAppMaker .ham-rail>small{color:#7e8a95!important;margin-left:10px!important}
+#haxNewAppMaker .ham-rail button{color:#7f8a94!important;border:1px solid transparent!important;border-radius:7px!important;padding:11px 12px!important;gap:12px!important;white-space:nowrap!important}
+#haxNewAppMaker .ham-rail button:hover{background:#10151a!important;color:#dce4ea!important}
+#haxNewAppMaker .ham-rail button.active{background:#101a22!important;border-color:#2c5266!important;color:#dff7ff!important}
+#haxNewAppMaker .ham-rail button.active b{color:#79dcff!important}
+#haxNewAppMaker .ham-engine{background:#0d1115!important;border-color:#242c33!important;border-radius:8px!important}
+#haxNewAppMaker .ham-main{background:#07090c!important}
+#haxNewAppMaker .ham-hero{width:min(900px,88%)!important}
+#haxNewAppMaker .ham-kicker{color:#7bdcff!important}
+#haxNewAppMaker .ham-hero h1{font-weight:800!important;letter-spacing:-.055em!important;color:#f4f7f9!important;-webkit-text-fill-color:#f4f7f9!important}
+#haxNewAppMaker .ham-hero h1 em{background:none!important;color:#8bdfff!important;-webkit-text-fill-color:#8bdfff!important}
+#haxNewAppMaker .ham-build-title h2,#haxNewAppMaker .ham-product-head h2{color:#f1f6f9!important;-webkit-text-fill-color:#f1f6f9!important}
+#haxNewAppMaker .ham-hero p{color:#87939e!important}
+#haxNewAppMaker .ham-input{background:#0b0e12!important;border:1px solid #29323a!important;border-radius:12px!important;box-shadow:0 18px 55px rgba(0,0,0,.28)!important;backdrop-filter:none!important}
+#haxNewAppMaker .ham-input textarea{color:#edf4f8!important}
+#haxNewAppMaker .ham-chips button{background:#0f1419!important;border-color:#2a333b!important;color:#9ca9b4!important;border-radius:6px!important}
+#haxNewAppMaker .ham-chips button:hover{background:#151b21!important;color:#dce8ee!important}
+#haxNewAppMaker .ham-build,#haxNewAppMaker .ham-evolve button{background:#c9f4ff!important;color:#061016!important;border:1px solid #8fdced!important;border-radius:7px!important;box-shadow:none!important}
+#haxNewAppMaker .ham-build:hover,#haxNewAppMaker .ham-evolve button:hover{background:#e3faff!important}
+/* Build state is a dedicated full-screen transition, not a card inside the maker. */
+#haxNewAppMaker:has(#hamBuilding:not([hidden])) .ham-head,#haxNewAppMaker:has(#hamBuilding:not([hidden])) .ham-rail{opacity:0;pointer-events:none}
+#haxNewAppMaker:has(#hamBuilding:not([hidden])) .ham-layout{height:100%!important}
+#haxNewAppMaker:has(#hamBuilding:not([hidden])) .ham-main{position:absolute;inset:0;background:#05070a!important}
+#haxNewAppMaker .ham-building{position:absolute;inset:0;width:100%!important;height:100%!important;padding:0!important;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#05070a!important;z-index:20}
+#haxNewAppMaker .ham-reactor{width:min(520px,70vw)!important;height:300px!important;flex:0 0 300px!important}
+#haxNewAppMaker .ham-reactor:before{width:250px!important;height:95px!important;border-color:rgba(88,210,255,.42)!important}
+#haxNewAppMaker .ham-reactor:after{width:160px!important;height:250px!important;border-color:rgba(145,108,255,.48)!important}
+#haxNewAppMaker .ham-reactor div{width:86px!important;height:86px!important;background:#080a0e!important;border:1px solid #8b6cff!important;box-shadow:0 0 0 10px rgba(102,83,220,.10),0 0 70px rgba(82,183,255,.32),inset 0 0 38px rgba(127,91,255,.32)!important}
+#haxNewAppMaker .ham-build-title span{color:#84ddff!important}
+#haxNewAppMaker .ham-build-title h2{color:#f1f6f9!important;font-size:28px!important;letter-spacing:-.025em!important}
+#haxNewAppMaker .ham-build-title p{color:#7f8d98!important}
+#haxNewAppMaker .ham-log{width:min(760px,86vw)!important;background:#080b0f!important;border:1px solid #27323b!important;border-radius:9px!important;max-height:220px!important}
+#haxNewAppMaker .ham-log-row{color:#9aa7b2!important;border-color:#1c242b!important}
+#haxNewAppMaker .ham-log-row.ok{color:#a7eaff!important}
+#haxNewAppMaker .ham-log-row span{color:#586773!important}
+/* Generated product gets its own clean workspace layer; it never visually blends with the build screen. */
+#haxNewAppMaker .ham-product{background:#07090c!important;min-height:100%!important;padding:28px!important}
+#haxNewAppMaker .ham-product-head{border-bottom:1px solid #20272e!important;padding-bottom:18px!important}
+#haxNewAppMaker .ham-product-head h2{color:#f1f5f7!important}
+#haxNewAppMaker .ham-product-head p{color:#8996a1!important}
+#haxNewAppMaker .ham-product-actions button{background:#0d1217!important;border:1px solid #2a333b!important;color:#c3ced6!important;border-radius:7px!important}
+#haxNewAppMaker .ham-product-actions button:hover{background:#151b21!important;border-color:#46525d!important}
+#haxNewAppMaker .ham-product-actions .ham-see-preview{background:#1677ff!important;border-color:#1677ff!important;color:#fff!important;font-weight:900!important;padding:10px 14px!important;border-radius:7px!important;box-shadow:0 8px 24px rgba(22,119,255,.20)!important}
+#haxNewAppMaker .ham-product-actions .ham-see-preview:hover{background:#2f8aff!important;border-color:#2f8aff!important;color:#fff!important}
+#haxNewAppMaker .ham-product-actions .ham-publish{background:#9b63ff!important;border-color:#9b63ff!important;color:#05040a!important;font-weight:900!important;padding:10px 14px!important;border-radius:7px!important;box-shadow:0 8px 24px rgba(155,99,255,.18)!important}
+#haxNewAppMaker .ham-product-actions .ham-publish:hover{background:#b17cff!important;border-color:#b17cff!important;color:#05040a!important}
+#haxNewAppMaker .ham-publish-result{margin-top:12px;padding:16px 18px;border:1px solid #29343d;border-radius:10px;background:#0b0f13!important}
+#haxNewAppMaker .ham-congrats{color:#dce8ef;font-size:12px;margin-bottom:12px}
+#haxNewAppMaker .ham-congrats b{font-weight:800}
+#haxNewAppMaker .ham-published-row{display:flex;gap:8px}
+#haxNewAppMaker .ham-published-row input{flex:1;min-width:0;height:40px;padding:0 12px;border:1px solid #2d3942;border-radius:7px;background:#070a0d;color:#9fe7ff;font:11px ui-monospace,monospace;outline:0}
+#haxNewAppMaker .ham-published-row button{height:40px;padding:0 16px;border:0;border-radius:7px;background:#e9f7ff;color:#061016;font-size:9px;font-weight:900;cursor:pointer}
+#haxNewAppMaker .ham-open-link{display:inline-block;margin-top:10px;color:#8cddff;font-size:9px;letter-spacing:.08em;text-decoration:none}
+#haxNewAppMaker .ham-open-link:hover{text-decoration:underline}
+#haxNewAppMaker .ham-canvas,#haxNewAppMaker .ham-files,#haxNewAppMaker .ham-evolve{background:#0a0e12!important;border:1px solid #252e36!important;border-radius:10px!important}
+#haxNewAppMaker .ham-canvas-head,#haxNewAppMaker .ham-tabs,#haxNewAppMaker .ham-code-head{border-color:#20282f!important}
+#haxNewAppMaker .ham-canvas-head button{background:#0e1318!important;border:1px solid #29333b!important;color:#9ca8b1!important;border-radius:6px!important}
+#haxNewAppMaker .ham-canvas-head button.active,#haxNewAppMaker .ham-tabs button.active{background:#17242c!important;color:#b9edff!important}
+#haxNewAppMaker .ham-file{border-color:#1d252c!important;color:#9da9b2!important}
+#haxNewAppMaker .ham-file.active{background:#11202a!important;color:#dff6ff!important}
+#haxNewAppMaker .ham-file b{color:#79dfff!important}
+#haxNewAppMaker .ham-files textarea,#haxNewAppMaker .ham-evolve textarea{background:#070a0d!important;border-color:#28323a!important;color:#c9efff!important}
+#haxNewAppMaker .ham-evolve{padding:13px!important}
+@media(max-width:850px){#haxNewAppMaker:has(#hamBuilding:not([hidden])) .ham-main{inset:0}#haxNewAppMaker .ham-building{justify-content:center}.ham-reactor{margin-top:-30px}#haxNewAppMaker .ham-log{width:92vw!important}}
+/* KAI live modification composer — prominent, conversational, pre-publish */
+#haxNewAppMaker .ham-kai-edit{position:relative;display:grid;grid-template-columns:minmax(180px,260px) 1fr auto;gap:12px;align-items:center;margin:0 0 14px;padding:15px;border:1px solid #29404d;border-radius:12px;background:#0a1015;box-shadow:0 12px 35px rgba(0,0,0,.18)}
+#haxNewAppMaker .ham-kai-edit-label{padding-left:4px}
+#haxNewAppMaker .ham-kai-edit-label span{display:block;color:#7edfff;font-size:8px;letter-spacing:.16em;margin-bottom:6px}
+#haxNewAppMaker .ham-kai-edit-label b{display:block;color:#dce8ee;font-size:11px;line-height:1.45}
+#haxNewAppMaker .ham-kai-edit textarea{width:100%;min-height:76px;resize:vertical;border:1px solid #2d3b45;border-radius:9px;background:#070b0f;color:#edf7fb;outline:0;padding:23px 13px 10px;font:12px/1.5 system-ui}
+#haxNewAppMaker .ham-kai-edit textarea::placeholder{color:#687783;opacity:1}
+#haxNewAppMaker .ham-kai-edit textarea:focus{border-color:#62cfee;box-shadow:0 0 0 2px rgba(98,207,238,.08)}
+#haxNewAppMaker .ham-kai-edit:focus-within{border-color:#315769}
+#haxNewAppMaker .ham-kai-edit:after{content:"WHAT DO YOU WANT TO MODIFY?";position:absolute;left:calc(260px + 27px);top:22px;color:#72818c;font-size:8px;letter-spacing:.12em;pointer-events:none;transition:transform .16s ease,color .16s ease}
+#haxNewAppMaker .ham-kai-edit:focus-within:after{transform:translateY(-11px) scale(.9);transform-origin:left top;color:#7edfff}
+#haxNewAppMaker .ham-kai-edit>button{border:0;border-radius:8px;padding:13px 15px;background:#c9f4ff;color:#061016;font-weight:900;font-size:8px;letter-spacing:.05em;cursor:pointer;white-space:nowrap}
+#haxNewAppMaker .ham-kai-edit>button:hover{background:#e3faff}
+#haxNewAppMaker .ham-check b{color:#b8e7f5!important}
+@media(max-width:850px){
+#haxNewAppMaker .ham-kai-edit{grid-template-columns:1fr}
+#haxNewAppMaker .ham-kai-edit:after{left:18px;top:92px}
+#haxNewAppMaker .ham-kai-edit>button{width:100%;min-height:42px}
+}
+@media(max-width:560px){
+#haxNewAppMaker .ham-kai-edit{padding:11px}
+#haxNewAppMaker .ham-kai-edit textarea{min-height:105px}
+#haxNewAppMaker .ham-kai-edit:after{left:15px;top:91px}
+}
+
+/* KAI 2.0 PRODUCT CONTROLS — HARD VISIBILITY LOCK */
+#haxNewAppMaker [hidden]{display:none!important}
+#haxNewAppMaker #hamProduct:not([hidden]){
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:20!important;
+}
+#haxNewAppMaker #hamProduct .ham-product-head{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:30!important;
+}
+#haxNewAppMaker .ham-product-actions{
+  display:flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:100!important;
+  margin-left:auto!important;
+  gap:10px!important;
+}
+#haxNewAppMaker .ham-product-actions .ham-see-preview,
+#haxNewAppMaker .ham-product-actions .ham-publish{
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  position:relative!important;
+  z-index:101!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:128px!important;
+  min-height:44px!important;
+  padding:11px 16px!important;
+  cursor:pointer!important;
+  pointer-events:auto!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+}
+#haxNewAppMaker .ham-product-actions .ham-see-preview{
+  background:#1677ff!important;
+  color:#fff!important;
+  border:1px solid #1677ff!important;
+}
+#haxNewAppMaker .ham-product-actions .ham-publish{
+  background:#9b63ff!important;
+  color:#05040a!important;
+  border:1px solid #9b63ff!important;
+}
+#haxNewAppMaker .ham-preview-float{
+  display:none!important;
+}
+#haxNewAppMaker .ham-publish-result{
+  display:block!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+/* FINAL ACTION BAR: independent of product layout, clipping, or inherited flex rules. */
+#haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions{
+  position:fixed!important;
+  top:82px!important;
+  right:24px!important;
+  display:flex!important;
+  width:auto!important;
+  margin:0!important;
+  padding:6px!important;
+  gap:8px!important;
+  background:#090d12!important;
+  border:1px solid #293740!important;
+  border-radius:10px!important;
+  box-shadow:0 12px 35px rgba(0,0,0,.45)!important;
+  z-index:2147483646!important;
+}
+#haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions .ham-see-preview,
+#haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions .ham-publish{
+  position:relative!important;
+  display:inline-flex!important;
+  visibility:visible!important;
+  opacity:1!important;
+  width:auto!important;
+  min-width:145px!important;
+  min-height:46px!important;
+  z-index:2147483647!important;
+}
+/* Migrated HAxBRO App Maker visual system from the proven standalone build. The existing nucleus/proton remains untouched. */
+#haxNewAppMaker .ham-hero{width:min(1240px,92%)!important;min-height:calc(100% - 1px)!important;padding:42px 0!important}
+#haxNewAppMaker .ham-hero-grid{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(320px,44%)!important;gap:34px!important;align-items:center!important;min-height:620px!important}
+#haxNewAppMaker .hero-copy{max-width:700px!important}
+#haxNewAppMaker .ham-hero h1{font-size:clamp(40px,5.4vw,72px)!important;line-height:.98!important;letter-spacing:-.06em!important;margin:14px 0 18px!important}
+#haxNewAppMaker .ham-hero p{max-width:610px!important;font-size:14px!important;line-height:1.8!important}
+#haxNewAppMaker .ham-input{margin-top:28px!important;border-radius:14px!important;background:#0a0e12!important;border:1px solid #29343d!important;box-shadow:0 24px 70px rgba(0,0,0,.28)!important}
+#haxNewAppMaker .ham-input textarea{min-height:132px!important;padding:18px!important;font-size:14px!important}
+#haxNewAppMaker .ham-scene{height:360px!important;position:relative!important;border:1px solid #202a32!important;border-radius:18px!important;overflow:hidden!important;background:#080b0f!important;box-shadow:inset 0 0 90px rgba(0,0,0,.45),0 24px 80px rgba(0,0,0,.22)!important}
+#haxNewAppMaker .ham-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px);background-size:42px 42px;opacity:.45}
+#haxNewAppMaker .ham-scene:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(80,170,220,.08),transparent 55%);pointer-events:none}
+#haxNewAppMaker .ham-scene-copy{position:absolute;left:18px;bottom:16px;z-index:2}
+#haxNewAppMaker .ham-scene-copy span{display:block;color:#9fb1bd;font-size:9px;letter-spacing:.18em;font-weight:800}
+#haxNewAppMaker .ham-scene-copy small{display:block;margin-top:5px;color:#53626d;font-size:8px;letter-spacing:.14em}
+#haxNewAppMaker .ham-chips button{border-radius:7px!important;padding:8px 10px!important}
+#haxNewAppMaker .ham-build{border-radius:8px!important;background:#c9f4ff!important;color:#061016!important;box-shadow:none!important}
+#haxNewAppMaker .ham-build:hover{background:#e3faff!important}
+#haxNewAppMaker .ham-product{max-width:1500px!important;margin:auto!important}
+#haxNewAppMaker .ham-product-head{align-items:flex-end!important}
+#haxNewAppMaker .ham-product-actions{gap:8px!important}
+#haxNewAppMaker .ham-product-actions .ham-see-preview{background:#1677ff!important;border-color:#1677ff!important;color:#fff!important;font-weight:900!important}
+#haxNewAppMaker .ham-product-actions .ham-publish{background:#9b63ff!important;border-color:#9b63ff!important;color:#05040a!important;font-weight:900!important}
+#haxNewAppMaker .ham-kai-edit{background:#0a1015!important;border-color:#29404d!important}
+#haxNewAppMaker .ham-kai-edit textarea{background:#070b0f!important;border-color:#2d3b45!important}
+@media(max-width:900px){#haxNewAppMaker .ham-hero-grid{grid-template-columns:1fr!important;min-height:0!important}.ham-scene{height:280px!important}.ham-hero{width:94%!important}}
+@media(max-width:560px){#haxNewAppMaker .ham-scene{height:240px!important}#haxNewAppMaker .ham-hero h1{font-size:43px!important}}
+/* FINAL SIDEBAR VISIBILITY FIX — last rule wins over earlier 230px/nowrap overrides */
+#haxNewAppMaker .ham-rail{
+  width:320px!important;
+  flex:0 0 320px!important;
+  min-width:320px!important;
+  box-sizing:border-box!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  padding:28px 14px!important;
+}
+#haxNewAppMaker .ham-rail button{
+  width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:24px minmax(0,1fr)!important;
+  align-items:start!important;
+  gap:10px!important;
+  padding:11px 10px!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+}
+#haxNewAppMaker .ham-rail button b{
+  width:24px!important;
+  min-width:24px!important;
+  flex:none!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  line-height:1.3!important;
+}
+#haxNewAppMaker .ham-rail button span{
+  display:block!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  flex:none!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:anywhere!important;
+  word-break:normal!important;
+  line-height:1.35!important;
+}
+#haxNewAppMaker .ham-engine{
+  width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+}
+#haxNewAppMaker .ham-engine b,
+#haxNewAppMaker .ham-engine span{
+  min-width:0!important;
+  max-width:none!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  overflow-wrap:anywhere!important;
+}
+@media(max-width:850px){
+  #haxNewAppMaker .ham-rail{
+    width:320px!important;
+    flex-basis:320px!important;
+    min-width:320px!important;
+  }
+  #haxNewAppMaker .ham-rail button span{
+    font-size:11px!important;
+  }
+}
+
+@media(max-width:850px){
+  #haxNewAppMaker #hamProduct .ham-product-head{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+  }
+  #haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions{
+    top:auto!important;
+    right:12px!important;
+    left:12px!important;
+    bottom:12px!important;
+    width:auto!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+  }
+  #haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions .ham-see-preview,
+  #haxNewAppMaker #hamProduct:not([hidden]) .ham-product-actions .ham-publish{
+    width:100%!important;
+  }
+}

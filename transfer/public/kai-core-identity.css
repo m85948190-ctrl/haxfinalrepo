@@ -1,0 +1,36 @@
+/* KAI 51 identity: abstract intelligence core, not a toy robot. */
+.kai-companion{background:#fff!important;color:#101319!important;border:1px solid #d9dde3!important;box-shadow:none!important}
+.kai-companion:before,.kai-companion:after{display:none!important}
+.kai-companion-brand{color:#171b22!important}
+.kai-companion-online{color:#5a626e!important}
+.kai-companion-online i{background:#171b22!important;box-shadow:0 0 0 3px #eceef1!important}
+.kai-avatar-stage{position:relative!important;display:grid!important;place-items:center!important;height:142px!important;min-height:142px!important;background:linear-gradient(180deg,#fafbfc,#f0f2f5)!important;overflow:hidden!important}
+.kai-core-orbit{position:absolute;width:118px;height:118px;border:1px solid rgba(34,43,55,.18);border-radius:50%;pointer-events:none}
+.kai-core-orbit:before{content:"";position:absolute;inset:10px;border:1px dashed rgba(34,43,55,.2);border-radius:50%}
+.kai-core-orbit-a{animation:kaiCoreSpin 18s linear infinite}
+.kai-core-orbit-b{width:92px;height:92px;border-style:dashed;animation:kaiCoreSpin 13s linear infinite reverse}
+.kai-core-orbit-c{width:136px;height:136px;border-color:rgba(34,43,55,.09);animation:kaiCorePulse 4s ease-in-out infinite}
+.kai-core-mark{position:relative;z-index:2;width:116px;height:116px;filter:drop-shadow(0 8px 12px rgba(20,28,38,.12));animation:kaiCoreFloat 5s ease-in-out infinite}
+.kai-core-halo{stroke-dasharray:10 8;animation:kaiCoreSpin 24s linear infinite}
+.kai-core-symbol{stroke:#161b23!important;stroke-width:9!important}
+.kai-core-node{animation:kaiCoreNode 2.8s ease-in-out infinite}
+.kai-companion-status{margin-top:7px!important}
+.kai-companion-action{color:#171b22!important}
+.kai-companion-detail{color:#737b86!important}
+.kai-companion[data-state="thinking"] .kai-core-mark{animation:kaiCoreThink 1.8s ease-in-out infinite}
+.kai-companion[data-state="searching"] .kai-core-orbit-a,.kai-companion[data-state="reading"] .kai-core-orbit-a{animation-duration:4s}
+.kai-companion[data-state="coding"] .kai-core-node{animation-duration:.45s}
+.kai-companion[data-state="building"] .kai-core-orbit-b{transform:scale(1.12)}
+.kai-companion[data-state="completed"] .kai-core-mark{animation:kaiCoreComplete .65s ease-out 2}
+.kai-companion[data-state="error"] .kai-core-node{fill:#555!important;animation:none}
+@keyframes kaiCoreSpin{to{transform:rotate(360deg)}}
+@keyframes kaiCorePulse{0%,100%{opacity:.45;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes kaiCoreFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes kaiCoreNode{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.25)}}
+@keyframes kaiCoreThink{0%,100%{transform:rotate(-4deg) scale(.98)}50%{transform:rotate(4deg) scale(1.03)}}
+@keyframes kaiCoreComplete{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@media(max-width:760px){.kai-avatar-stage{height:94px!important;min-height:94px!important}.kai-core-mark{width:82px;height:82px}.kai-core-orbit-a{width:78px;height:78px}.kai-core-orbit-b{width:62px;height:62px}.kai-core-orbit-c{width:90px;height:90px}}
+@media(prefers-reduced-motion:reduce){.kai-core-mark,.kai-core-orbit,.kai-core-halo,.kai-core-node{animation:none!important}}
+body.dark .kai-companion,.dark .kai-companion,[data-theme="dark"] .kai-companion{background:#11151b!important;border-color:#333b46!important;color:#f4f6f8!important}
+body.dark .kai-avatar-stage,.dark .kai-avatar-stage,[data-theme="dark"] .kai-avatar-stage{background:#171d25!important}
+body.dark .kai-core-symbol,.dark .kai-core-symbol,[data-theme="dark"] .kai-core-symbol{stroke:#f3f5f7!important}

@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HAxBRO App Maker — KAI 2.0</title><link rel="stylesheet" href="/app-maker-original/style.css?v=2"><link rel="stylesheet" href="/app-maker-original/template-studio.css?v=5"></head><body>
+<div class="shell">
+<header class="top"><div class="brand"><span class="mark">HX</span><div><strong>HAxBRO APP MAKER</strong><small>I51 · KAI 2.0 BUILD ENGINE</small></div></div><div class="top-right"><span class="signal"><i></i> I51 ONLINE</span><a href="https://haxbro-ai-oybr.hatchable.site" target="_blank" rel="noreferrer">Open HAxBRO ↗</a></div></header>
+<main class="workspace">
+<aside class="sidebar"><button id="newProject" class="new">＋ New project</button><div class="label">WORKSPACE</div><div id="projectInfo" class="project-info">Untitled project<br><span>Describe an app to begin.</span></div><div class="label">BUILD FLOW</div><ol id="flow"><li class="active">Intent</li><li>Architect</li><li>Build</li><li>Test</li><li>Publish</li></ol><div class="kai-card"><span class="pulse"></span><div><b>KAI 2.0</b><small>Autonomous build engine</small></div></div></aside>
+<section class="builder"><nav class="maker-section-tabs" aria-label="App Maker sections"><button type="button" class="maker-tab active" id="makeAppTab" aria-controls="appBuilderSection" aria-selected="true">Make your own app</button><a class="maker-tab" id="publishStaticTab" href="/static-publish/">Publish your static files</a></nav><div id="appBuilderSection" class="maker-section">
+<div class="hero"><div class="hero-copy"><div class="eyebrow">I51 → KAI 2.0</div><h1>Turn an idea into a <em>working app.</em></h1><p>Describe what you want. KAI 2.0 plans it, builds the real interaction, tests the result and publishes a live version.</p></div><div class="scene"><canvas id="space" aria-hidden="true"></canvas><div class="scene-label"><span id="sceneState">READY</span><small>BUILD SPACE</small></div></div></div>
+<div class="prompt-card"><div class="prompt-top"><span>BUILD COMMAND</span><span id="buildMode">PRODUCT INTELLIGENCE</span></div><textarea id="prompt" placeholder="Build me an AI chatbot called Hero AI with a polished chat interface..."></textarea><div class="prompt-actions"><div class="chips" hidden></div><button id="build" class="build">Build Product <span>⌘↵</span></button></div></div>
+<div class="static-publish-placeholder"></div>
+<div id="status" class="status"><span class="status-dot"></span>Ready when you are.</div>
+<div class="agent-activity" id="agentActivity" aria-live="polite">
+  <div class="activity-head"><span>KAI BUILDER · LIVE BUILD REPORT</span><span id="activityMode">STANDBY</span></div>
+  <div class="stage-rail" id="stageRail">
+    <div class="stage active" data-stage="signal"><i></i><span>Signal</span></div>
+    <div class="stage" data-stage="understand"><i></i><span>Understand</span></div>
+    <div class="stage" data-stage="ponder"><i></i><span>Ponder</span></div>
+    <div class="stage" data-stage="architect"><i></i><span>Architect</span></div>
+    <div class="stage" data-stage="build"><i></i><span>Build</span></div>
+    <div class="stage" data-stage="test"><i></i><span>Inspect</span></div>
+    <div class="stage" data-stage="repair"><i></i><span>Repair</span></div>
+    <div class="stage" data-stage="ready"><i></i><span>Ready</span></div>
+  </div>
+</div>
+<div class="live-build" id="liveBuild">
+  <div class="live-report">
+    <div class="live-report-head"><span>KAI LIVE WORK</span><span id="reportState">IDLE</span></div>
+    <div id="kaiWorkStrip" class="kai-work-strip" aria-live="polite"></div>
+    <div class="report-stream" id="reportStream"></div>
+  </div>
+</div>
+<section id="result" class="result hidden">
+  <div class="result-head"><div><div class="eyebrow">MADE APPLICATION · READY TO MODIFY OR REBUILD</div><h2 id="resultName">Your app</h2><p id="resultSummary"></p></div><div class="publish-badge" id="publishBadge">● READY</div></div>
+  <div class="live-workspace">
+    <div class="preview live-preview"><div class="preview-head"><span>MADE APPLICATION · LIVE PREVIEW</span><div><button id="openPreview">Open ↗</button><button id="publishExternal">Publish</button></div></div><iframe id="frame" sandbox="allow-scripts allow-forms allow-modals"></iframe><div class="live-link"><span>LIVE URL</span><a id="publicUrl" target="_blank" rel="noreferrer"></a><button id="copyUrl">Copy</button></div></div>
+    <aside class="maker-side-panel">
+      <div class="panel-title">EDIT THIS MADE APPLICATION · KAI LIVE WORK</div>
+      <div id="resultReport" class="maker-side-log" aria-live="polite"></div>
+      <div class="maker-side-input">
+        <div class="maker-composer">
+          <div class="maker-composer-meta"><span>KAI 51</span><span>LIVE AGENT</span></div>
+          <textarea id="modifyPrompt" rows="1" placeholder="Tell KAI what to modify or rebuild…"></textarea>
+          <div class="maker-composer-bottom"><span>Enter to send · Shift+Enter for new line</span><button id="modifyBuild" aria-label="Send to KAI 51">↗</button></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div class="artifact-row"><div class="files"><div class="panel-title">BUILD ARTIFACT</div><div id="files"></div><button id="copyAll">Copy source</button></div></div>
+</section>
+</div><section id="staticPublishSection" class="static-publish-section" hidden><section class="upload-deploy-card" id="uploadDeployCard"><div class="upload-deploy-copy"><div class="eyebrow">STATIC WEBSITE HOSTING</div><h2>Publish your static files</h2><p>Already have a website? Drop your project here and get a shareable live link. Upload a ZIP, a complete folder, or individual files.</p></div><div class="upload-dropzone" id="uploadDropzone" tabindex="0" role="button" aria-label="Drag and drop or choose a ZIP archive, folder, or project files"><div class="upload-file-art" aria-hidden="true"><svg viewBox="0 0 24 24" role="presentation"><path d="M7 2.75h6.5L19 8.2v12.05a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3.75a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M13.5 2.9v5.5H19M9 13h6m-6 3.5h6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div><strong>Drag &amp; drop your files here</strong><span>Drop your ZIP, project folder, or select files from your device</span><div class="upload-pickers"><button type="button" id="chooseZip">Choose ZIP</button><button type="button" id="chooseFolder">Choose folder</button><button type="button" id="chooseFiles">Choose files</button></div><small>HTML · CSS · JavaScript · Images · Fonts · Up to 6 MB · React/Vite: upload the built dist folder</small></div><input id="uploadZipInput" type="file" accept=".zip,application/zip" hidden><input id="uploadFolderInput" type="file" webkitdirectory directory multiple hidden><input id="uploadFilesInput" type="file" multiple hidden><div id="uploadFileList" class="upload-file-list" hidden></div><div class="upload-deploy-actions"><span id="uploadDeployStatus" role="status" aria-live="polite">No files selected. Your App Maker projects remain separate.</span><button id="uploadDeployButton" type="button" disabled>Publish to web ↗</button></div></section></section></section></main></div><script src="/kai51-boot-stamp.js?v=21"></script><script src="/kai51-local.js?v=146"></script><script src="/kai-capability-bridge.js?v=18"></script><script src="/app-maker-original/template-catalog.js?v=2"></script><script src="/app-maker-original/codewriter-engine.js?v=4"></script><script src="/app-maker-original/code-engine.js?v=34"></script><script src="/app-maker-original/app.js?v=27"></script><script src="/app-maker-original/upload-publish.js?v=1"></script><script src="/app-maker-original/template-studio.js?v=13"></script><script src="/app-maker-original/guided-flow.js?v=5"></script><script>(()=>{const strip=()=>document.querySelectorAll('#hb-badge,[data-hatchable-badge],.hatchable-badge,[class*="hatchable-badge"],[id*="hatchable-badge"],iframe[src*="tawk.to"],script[src*="tawk.to"],#tawk-bubble-container,#tawkchat-container,.tawk-min-container').forEach(el=>el.remove());strip();new MutationObserver(strip).observe(document.documentElement,{childList:true,subtree:true})})();</script><!-- Unwanted third-party chat widget removed --><!----><script>(()=>{const make=document.getElementById('makeAppTab'),publish=document.getElementById('publishStaticTab'),app=document.getElementById('appBuilderSection'),stat=document.getElementById('staticPublishSection');if(!make||!publish||!app||!stat)return;function show(which){const isApp=which==='app';app.hidden=!isApp;stat.hidden=isApp;make.classList.toggle('active',isApp);publish.classList.toggle('active',!isApp);make.setAttribute('aria-selected',String(isApp));publish.setAttribute('aria-selected',String(!isApp));}make.addEventListener('click',()=>show('app'));publish.addEventListener('click',()=>show('static'));})();</script></body></html>

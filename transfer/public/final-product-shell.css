@@ -1,0 +1,318 @@
+/* HAxBRO FINAL PRODUCT SHELL — 2026-09-18
+   One restrained visual system. Loaded last so older experimental layers cannot fight it.
+*/
+:root{
+  --hx-charcoal:#17191c;
+  --hx-charcoal-2:#1d2024;
+  --hx-charcoal-3:#24282d;
+  --hx-line:#30353b;
+  --hx-blue:#69b9ee;
+  --hx-blue-strong:#4d9bd2;
+  --hx-text:#e4e7ea;
+  --hx-muted:#8f979f;
+  --hx-dim:#737b84;
+  --hx-light-bg:#e9ecef;
+  --hx-light-panel:#eef1f3;
+  --hx-light-surface:#f3f5f6;
+  --hx-light-line:#cbd1d6;
+  --hx-light-text:#30363c;
+  --hx-light-muted:#737b83;
+}
+html[data-theme="dark"] body.hax-modern,
+html[data-theme="dark"] body.hax-modern .app-shell,
+html[data-theme="dark"] body.hax-modern .chat-panel,
+html[data-theme="dark"] body.hax-modern .messages{
+  background:var(--hx-charcoal)!important;color:var(--hx-text)!important;
+}
+html[data-theme="dark"] body.hax-modern .topbar,
+html[data-theme="dark"] body.hax-modern .sidebar{
+  background:#1b1d20!important;border-color:#2d3237!important;
+}
+html[data-theme="dark"] body.hax-modern .chat-head{background:#191b1e!important;border-color:#2d3237!important}
+html[data-theme="dark"] body.hax-modern .composer .input-wrap{background:#202328!important;border-color:#3a4046!important;box-shadow:0 8px 28px rgba(0,0,0,.2)!important}
+html[data-theme="dark"] body.hax-modern .composer textarea{color:#e4e7ea!important;-webkit-text-fill-color:#e4e7ea!important}
+html[data-theme="dark"] body.hax-modern .composer textarea::placeholder{color:#7d858d!important;-webkit-text-fill-color:#7d858d!important}
+html[data-theme="dark"] body.hax-modern .composer .mic{background:#24282d!important;border-color:#3a4046!important;color:#d9dde1!important}
+html[data-theme="dark"] body.hax-modern .composer .send{background:#dfe3e6!important;border-color:#dfe3e6!important;color:#1b1e22!important}
+html[data-theme="dark"] body.hax-modern .hero-welcome h1{color:#e7eaed!important}
+html[data-theme="dark"] body.hax-modern .hero-welcome h1 span{color:#8ac5ed!important}
+html[data-theme="dark"] body.hax-modern .hero-welcome p{color:#90989f!important}
+html[data-theme="dark"] body.hax-modern .hero-chips span,
+html[data-theme="dark"] body.hax-modern .hero-capabilities>div{background:#1d2024!important;border-color:#30353b!important}
+html[data-theme="dark"] body.hax-modern .maker-link:hover,
+html[data-theme="dark"] body.hax-modern .mode-btn:hover,
+html[data-theme="dark"] body.hax-modern .top-toggle:hover{background:#24282d!important;border-color:#3a4046!important}
+html[data-theme="dark"] body.hax-modern .mode-btn.active{background:#26343f!important;border-color:#46677e!important;color:#b8dbef!important}
+html[data-theme="light"] body.hax-modern,
+html[data-theme="light"] body.hax-modern .app-shell,
+html[data-theme="light"] body.hax-modern .chat-panel,
+html[data-theme="light"] body.hax-modern .messages{background:var(--hx-light-bg)!important;color:var(--hx-light-text)!important}
+html[data-theme="light"] body.hax-modern .topbar,
+html[data-theme="light"] body.hax-modern .sidebar{background:var(--hx-light-panel)!important;border-color:var(--hx-light-line)!important}
+html[data-theme="light"] body.hax-modern .chat-head{background:#e7eaed!important;border-color:var(--hx-light-line)!important}
+html[data-theme="light"] body.hax-modern .hero-welcome h1{color:#30363c!important}
+html[data-theme="light"] body.hax-modern .hero-welcome h1 span{color:#397cab!important}
+html[data-theme="light"] body.hax-modern .hero-welcome p{color:#6f777f!important}
+html[data-theme="light"] body.hax-modern .hero-chips span,
+html[data-theme="light"] body.hax-modern .hero-capabilities>div{background:#f0f2f3!important;border-color:#d0d5d9!important}
+html[data-theme="light"] body.hax-modern .composer .input-wrap{background:#f1f3f4!important;border-color:#bfc6cc!important;box-shadow:0 5px 18px rgba(40,48,55,.08)!important}
+html[data-theme="light"] body.hax-modern .composer textarea{color:#30363c!important;-webkit-text-fill-color:#30363c!important}
+html[data-theme="light"] body.hax-modern .composer textarea::placeholder{color:#858d94!important;-webkit-text-fill-color:#858d94!important}
+html[data-theme="light"] body.hax-modern .composer .mic{background:#e5e8ea!important;border-color:#c1c7cc!important;color:#41484e!important}
+html[data-theme="light"] body.hax-modern .composer .send{background:#30363c!important;border-color:#30363c!important;color:#eef1f3!important}
+body.hax-modern .sidebar .ai-tools:first-of-type,
+body.hax-modern .sidebar .ai-tools:first-of-type + .ai-tools{display:none!important}
+body.hax-modern .mobile-drawer #mobileAppMakerBtn,
+body.hax-modern .mobile-drawer #mobileXproWorkspaceBtn,
+body.hax-modern .mobile-drawer #mobileArtGenerationBtn,
+body.hax-modern .mobile-drawer #mobileUiCommandCenterBtn,
+body.hax-modern .mobile-drawer #mobileCodeWriterBtn{display:none!important}
+body.hax-modern .mobile-drawer .history,
+body.hax-modern .mobile-drawer .mobile-settings{display:block!important}
+.hax-capability-rail{width:min(980px,calc(100% - 36px));margin:0 auto 10px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:auto}
+.hax-capability-brand{font:800 11px/1 Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:.12em;color:#aeb5bb;text-transform:none}
+.hax-capability-pills{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;width:100%}
+.hax-capability-pill{appearance:none;border:1px solid #343a40!important;border-radius:999px!important;background:#1e2125!important;color:#aeb6bd!important;min-height:31px;padding:0 12px!important;font:650 10px/1 Inter,ui-sans-serif,system-ui,sans-serif!important;letter-spacing:.01em;cursor:pointer;box-shadow:none!important;transition:background .16s,border-color .16s,color .16s,transform .16s!important}
+.hax-capability-pill:hover{background:#272b30!important;border-color:#4a535b!important;color:#e3e7ea!important;transform:translateY(-1px)!important}
+.hax-capability-pill.primary{border-color:#476d88!important;color:#b9dbed!important}
+.hax-capability-pill:active{transform:translateY(0)!important}
+html[data-theme="light"] .hax-capability-brand{color:#6e767d}
+html[data-theme="light"] .hax-capability-pill{background:#e0e4e7!important;border-color:#c1c7cc!important;color:#5e676e!important}
+html[data-theme="light"] .hax-capability-pill:hover{background:#d7dce0!important;border-color:#aeb6bd!important;color:#30363c!important}
+html[data-theme="light"] .hax-capability-pill.primary{border-color:#91b5cd!important;color:#376783!important}
+body.hax-modern #chatForm{bottom:60px!important}
+
+/* Mobile composer: the message field is a real tall rectangular text box;
+   microphone and send stay as separate touch controls beside it. */
+@media(max-width:700px){
+  body.hax-modern #chatForm{
+    position:fixed!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:max(10px,env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    height:auto!important;
+    min-height:66px!important;
+    display:flex!important;
+    align-items:stretch!important;
+    gap:7px!important;
+    padding:6px!important;
+    margin:0!important;
+    z-index:7000!important;
+    box-sizing:border-box!important;
+  }
+  body.hax-modern #chatForm .input-wrap{
+    flex:1 1 auto!important;
+    min-width:0!important;
+    min-height:56px!important;
+    height:56px!important;
+    padding:8px 34px 8px 9px!important;
+    display:flex!important;
+    align-items:center!important;
+    box-sizing:border-box!important;
+    border-radius:12px!important;
+    overflow:hidden!important;
+  }
+  body.hax-modern #chatForm #promptInput{
+    flex:1 1 auto!important;
+    width:100%!important;
+    min-width:0!important;
+    min-height:40px!important;
+    height:40px!important;
+    max-height:40px!important;
+    resize:none!important;
+    overflow-y:auto!important;
+    font-size:16px!important;
+    line-height:1.35!important;
+    padding:6px 0!important;
+    box-sizing:border-box!important;
+  }
+  body.hax-modern #chatForm #promptClearBtn{
+    position:absolute!important;
+    right:7px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    width:24px!important;
+    height:24px!important;
+    z-index:2!important;
+  }
+  body.hax-modern #chatForm #micBtn,
+  body.hax-modern #chatForm #sendBtn{
+    flex:0 0 48px!important;
+    width:48px!important;
+    min-width:48px!important;
+    height:56px!important;
+    min-height:56px!important;
+    max-height:56px!important;
+    margin:0!important;
+    padding:0!important;
+    border-radius:12px!important;
+    display:grid!important;
+    place-items:center!important;
+    box-sizing:border-box!important;
+  }
+  body.hax-modern #chatForm #micBtn{order:2!important}
+  body.hax-modern #chatForm #sendBtn{order:3!important}
+  body.hax-modern #chatForm #attachBtn{display:none!important}
+  body.hax-modern #chatForm .image-attachment-preview{display:none!important}
+}
+
+@media(max-width:380px){
+  body.hax-modern #chatForm{left:6px!important;right:6px!important;gap:5px!important}
+  body.hax-modern #chatForm #micBtn,
+  body.hax-modern #chatForm #sendBtn{
+    flex-basis:44px!important;
+    width:44px!important;
+    min-width:44px!important;
+  }
+}
+body.hax-modern #haxCapabilityMount{position:fixed;left:50%;bottom:calc(var(--kai69-safe-bottom,120px) + 76px);transform:translateX(-50%);z-index:2147481900}
+body.hax-modern #chatForm.kai69-badge-safe{z-index:2147482001!important}
+#kaiWorkCanvas.kai2050-space{position:fixed!important;inset:0!important;z-index:2147483000!important;overflow:hidden!important;background:#17191c!important;color:#e4e7ea!important}
+#kaiWorkCanvas.kai2050-space .k2050-top{height:66px!important;display:flex!important;align-items:center!important;padding:0 20px!important;background:#1b1d20!important;border-bottom:1px solid #30353b!important;box-sizing:border-box!important}
+#kaiWorkCanvas.kai2050-space .k2050-main{height:calc(100vh - 108px)!important;overflow:auto!important;padding:24px!important;box-sizing:border-box!important}
+#kaiWorkCanvas.kai2050-space .k2050-command,#kaiWorkCanvas.kai2050-space .k2050-product-frame{width:min(1320px,100%)!important;margin:0 auto!important;background:#1d2024!important;border:1px solid #343a40!important;border-radius:16px!important;box-shadow:0 18px 55px rgba(0,0,0,.24)!important}
+#kaiWorkCanvas.kai2050-space .k2050-command{padding:28px!important;box-sizing:border-box!important}
+#kaiWorkCanvas.kai2050-space .k2050-command-field{display:grid!important;grid-template-columns:28px minmax(0,1fr) 150px!important;gap:10px!important;align-items:stretch!important}
+#kaiWorkCanvas.kai2050-space #futurePrompt,#kaiWorkCanvas.kai2050-space #futureModify,#kaiWorkCanvas.kai2050-space #k2050Code{min-width:0!important;box-sizing:border-box!important;background:#15181b!important;color:#e5e8eb!important;border:1px solid #3a4046!important;border-radius:10px!important;outline:none!important}
+#kaiWorkCanvas.kai2050-space #futurePrompt{min-height:76px!important;padding:14px!important}
+#kaiWorkCanvas.kai2050-space #futureCreate,#kaiWorkCanvas.kai2050-space #futureModifyBtn,#kaiWorkCanvas.kai2050-space #k2050Publish,#kaiWorkCanvas.kai2050-space #k2050SavePreview{border-radius:10px!important;border:1px solid #5a626a!important;background:#dfe3e6!important;color:#202428!important;box-shadow:none!important;font-weight:800!important}
+#kaiWorkCanvas.kai2050-space .k2050-ideas{display:flex!important;gap:7px!important;flex-wrap:wrap!important;margin-top:12px!important}
+#kaiWorkCanvas.kai2050-space .k2050-ideas button{border:1px solid #3a4046!important;background:#202328!important;color:#aeb6bd!important;border-radius:999px!important;padding:8px 11px!important}
+#kaiWorkCanvas.kai2050-space .k2050-build{min-height:420px!important;display:grid!important;place-items:center!important}
+#kaiWorkCanvas.kai2050-space .k2050-product-frame{overflow:hidden!important}
+#kaiWorkCanvas.kai2050-space .k2050-product-body{display:grid!important;grid-template-columns:minmax(0,1fr) 290px!important;gap:16px!important;padding:16px!important;box-sizing:border-box!important}
+#kaiWorkCanvas.kai2050-space .k2050-preview-wrap{min-width:0!important;min-height:520px!important;background:#121518!important;border:1px solid #343a40!important;border-radius:12px!important;overflow:hidden!important}
+#kaiWorkCanvas.kai2050-space #kaiWorkPreview{display:block!important;width:100%!important;height:520px!important;border:0!important;background:#fff!important}
+#kaiWorkCanvas.kai2050-space .k2050-inspector{min-width:0!important;background:#191c20!important;border:1px solid #343a40!important;border-radius:12px!important;padding:14px!important;box-sizing:border-box!important}
+#kaiWorkCanvas.kai2050-space .k2050-evolve{display:grid!important;grid-template-columns:minmax(0,1fr) 150px!important;gap:10px!important;padding:16px!important;border-top:1px solid #30353b!important}
+#kaiWorkCanvas.kai2050-space .k2050-editor{padding:16px!important;border-top:1px solid #30353b!important}
+#kaiWorkCanvas.kai2050-space #k2050Code{width:100%!important;min-height:220px!important;padding:14px!important;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,monospace!important;resize:vertical!important}
+#kaiWorkCanvas.kai2050-space .k2050-bottom{height:42px!important;background:#1b1d20!important;border-top:1px solid #30353b!important;display:flex!important;align-items:center!important;justify-content:space-between!important;padding:0 20px!important;box-sizing:border-box!important;color:#7f888f!important;font-size:9px!important;letter-spacing:.08em!important}
+html[data-theme="light"] #kaiWorkCanvas.kai2050-space{background:#e9ecef!important;color:#30363c!important}
+html[data-theme="light"] #kaiWorkCanvas.kai2050-space .k2050-top,html[data-theme="light"] #kaiWorkCanvas.kai2050-space .k2050-bottom{background:#eef1f3!important;border-color:#cbd1d6!important}
+html[data-theme="light"] #kaiWorkCanvas.kai2050-space .k2050-command,html[data-theme="light"] #kaiWorkCanvas.kai2050-space .k2050-product-frame{background:#f0f2f3!important;border-color:#cbd1d6!important}
+html[data-theme="light"] #kaiWorkCanvas.kai2050-space #futurePrompt,html[data-theme="light"] #kaiWorkCanvas.kai2050-space #futureModify,html[data-theme="light"] #kaiWorkCanvas.kai2050-space #k2050Code{background:#f5f6f7!important;color:#30363c!important;border-color:#bfc6cc!important}
+html[data-theme="light"] #kaiWorkCanvas.kai2050-space .k2050-ideas button{background:#e4e7e9!important;color:#5e676e!important;border-color:#c1c7cc!important}
+@media(max-width:760px){
+  body.hax-modern #haxCapabilityMount{bottom:calc(var(--kai69-safe-bottom,108px) + 70px);width:calc(100% - 18px)}
+  .hax-capability-pills{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .hax-capability-pill{flex:0 0 auto}
+  #kaiWorkCanvas.kai2050-space .k2050-top{padding:0 12px!important}
+  #kaiWorkCanvas.kai2050-space .k2050-main{padding:12px!important}
+  #kaiWorkCanvas.kai2050-space .k2050-command{padding:16px!important}
+  #kaiWorkCanvas.kai2050-space .k2050-command-field{grid-template-columns:1fr!important}
+  #kaiWorkCanvas.kai2050-space .k2050-product-body{grid-template-columns:1fr!important}
+  #kaiWorkCanvas.kai2050-space .k2050-preview-wrap,#kaiWorkCanvas.kai2050-space #kaiWorkPreview{height:58vh!important;min-height:360px!important}
+  #kaiWorkCanvas.kai2050-space .k2050-evolve{grid-template-columns:1fr!important}
+  #kaiWorkCanvas.kai2050-space .k2050-bottom{padding:0 10px!important}
+  #kaiWorkCanvas.kai2050-space .k2050-bottom span:nth-child(3){display:none!important}
+}
+
+/* MOBILE UI AUDIT — only active on compact layouts. */
+@media (max-width:760px){
+  :root{--hx-safe-bottom:env(safe-area-inset-bottom,0px);--hx-safe-top:env(safe-area-inset-top,0px);--hx-composer-gap:10px}
+  html,body{min-height:100%;overflow:hidden}
+  body.hax-modern{height:100dvh;min-height:100dvh}
+  body.hax-modern .topbar{padding-top:var(--hx-safe-top)!important;min-height:56px!important}
+  body.hax-modern .app-shell{height:calc(100dvh - 56px - var(--hx-safe-top))!important;min-height:0!important}
+  body.hax-modern .chat-panel{min-height:0!important;height:100%!important;display:flex!important;flex-direction:column!important}
+  body.hax-modern .chat-head{flex:0 0 auto!important}
+  body.hax-modern .messages{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding:12px 12px calc(150px + var(--hx-safe-bottom))!important;-webkit-overflow-scrolling:touch!important}
+  body.hax-modern #haxCommandShortcuts{flex:0 0 auto!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;padding:6px 10px!important;scrollbar-width:none!important}
+  body.hax-modern #haxCommandShortcuts::-webkit-scrollbar{display:none}
+  body.hax-modern #chatForm{position:fixed!important;left:8px!important;right:8px!important;inset-inline-start:8px!important;inset-inline-end:8px!important;bottom:calc(12px + var(--hx-safe-bottom))!important;width:calc(100% - 16px)!important;max-width:none!important;margin:0!important;transform:none!important;z-index:2147483646!important;display:grid!important;grid-template-columns:40px minmax(0,1fr) 40px 48px!important;gap:6px!important;align-items:end!important;padding:8px!important;border:1px solid rgba(127,139,149,.35)!important;border-radius:16px!important;background:color-mix(in srgb,#eef1f3 92%,transparent)!important;backdrop-filter:blur(18px)!important;box-shadow:0 12px 40px rgba(0,0,0,.18)!important}
+  html[data-theme="dark"] body.hax-modern #chatForm{background:color-mix(in srgb,#1d2024 92%,transparent)!important}
+  body.hax-modern #chatForm .input-wrap{min-width:0!important;width:auto!important;min-height:44px!important;display:flex!important;align-items:flex-end!important;gap:4px!important}
+  body.hax-modern #promptInput{width:100%!important;min-width:0!important;max-height:128px!important;min-height:42px!important;resize:none!important;overflow-y:auto!important;padding:11px 30px 10px 6px!important;font-size:16px!important;line-height:1.35!important}
+  body.hax-modern #modelPickerBtn{flex:0 0 auto!important;max-width:58px!important;min-height:36px!important;padding:0 6px!important}
+  body.hax-modern #selectedModelLabel{max-width:34px!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  body.hax-modern #attachBtn,body.hax-modern #micBtn,body.hax-modern #sendBtn{min-width:40px!important;min-height:44px!important;width:40px!important;height:44px!important;margin:0!important;touch-action:manipulation!important}
+  body.hax-modern #sendBtn{width:48px!important}
+  body.hax-modern #promptClearBtn{right:6px!important;bottom:8px!important;min-width:30px!important;min-height:30px!important}
+  body.hax-modern .hint{display:none!important}
+  body.hax-modern .mobile-menu,body.hax-modern .mobile-kai-log-btn{top:calc(8px + var(--hx-safe-top))!important;min-width:44px!important;min-height:44px!important;z-index:2147483600!important;touch-action:manipulation!important}
+  body.hax-modern .mobile-menu{left:8px!important}
+  body.hax-modern .mobile-kai-log-btn{right:8px!important}
+  body.hax-modern .mobile-drawer{height:100dvh!important;max-height:100dvh!important;overflow:hidden!important;padding-top:var(--hx-safe-top)!important}
+  body.hax-modern .mobile-drawer-content{height:calc(100dvh - 58px - var(--hx-safe-top))!important;overflow-y:auto!important;overscroll-behavior:contain!important;padding-bottom:calc(24px + var(--hx-safe-bottom))!important;-webkit-overflow-scrolling:touch!important}
+  body.hax-modern .mobile-drawer button,body.hax-modern .mobile-drawer a{min-height:44px!important;touch-action:manipulation!important}
+  body.hax-modern .model-picker-menu{position:fixed!important;left:10px!important;right:10px!important;bottom:calc(84px + var(--hx-safe-bottom))!important;max-height:min(58dvh,420px)!important;overflow-y:auto!important;z-index:2147483647!important}
+  body.hax-modern .install-experience,body.hax-modern #artGenerationPanel,body.hax-modern .username-gate{height:100dvh!important;max-height:100dvh!important;overflow:auto!important;padding:var(--hx-safe-top) 10px var(--hx-safe-bottom)!important;box-sizing:border-box!important}
+  body.hax-modern .install-card,body.hax-modern .art-generation-card,body.hax-modern .username-card{width:min(100%,520px)!important;max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;margin:auto!important}
+  body.hax-modern .art-generation-close,body.hax-modern .install-close{min-width:44px!important;min-height:44px!important}
+  body.hax-modern .mode-buttons{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important}
+  body.hax-modern .mode-btn{min-height:44px!important;min-width:0!important;padding:0 6px!important}
+  body.hax-modern .maker-link{min-height:46px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important}
+  body.hax-modern .sidebar{display:none!important}
+}
+@media (max-width:380px){
+  body.hax-modern #chatForm{grid-template-columns:36px minmax(0,1fr) 36px 44px!important;left:4px!important;right:4px!important;padding:6px!important;gap:4px!important}
+  body.hax-modern #attachBtn,body.hax-modern #micBtn{min-width:36px!important;width:36px!important}
+  body.hax-modern #sendBtn{width:44px!important}
+  body.hax-modern #modelPickerBtn{display:none!important}
+}
+/* FINAL MOBILE COMPOSER — single ChatGPT-style pill, not a rectangular box.
+   Voice/send/attach live INSIDE the same rounded bar. */
+@media (max-width:760px){
+  body.hax-modern #chatForm{
+    left:8px!important;right:8px!important;bottom:calc(10px + var(--hx-safe-bottom,0px))!important;
+    width:calc(100% - 16px)!important;min-height:50px!important;height:50px!important;
+    display:flex!important;align-items:center!important;gap:3px!important;
+    padding:5px 6px 5px 10px!important;
+    border:1px solid rgba(127,139,149,.35)!important;
+    border-radius:999px!important;
+    background:#eef1f3!important;
+    box-shadow:0 8px 28px rgba(0,0,0,.14)!important;
+    box-sizing:border-box!important;
+  }
+  html[data-theme="dark"] body.hax-modern #chatForm{
+    background:#202328!important;border-color:#3a4046!important;
+  }
+  body.hax-modern #chatForm .input-wrap{
+    order:2!important;flex:1 1 auto!important;min-width:0!important;
+    min-height:38px!important;height:38px!important;padding:0!important;
+    display:flex!important;align-items:center!important;
+    border:0!important;background:transparent!important;box-shadow:none!important;
+    border-radius:999px!important;
+  }
+  body.hax-modern #promptInput{
+    min-height:34px!important;height:34px!important;max-height:34px!important;
+    width:100%!important;padding:7px 4px!important;
+    border:0!important;outline:0!important;background:transparent!important;
+    resize:none!important;overflow:hidden!important;font-size:16px!important;
+    line-height:1.3!important;
+  }
+  body.hax-modern #attachBtn,
+  body.hax-modern #micBtn,
+  body.hax-modern #sendBtn{
+    flex:0 0 36px!important;width:36px!important;min-width:36px!important;
+    height:36px!important;min-height:36px!important;padding:0!important;margin:0!important;
+    border-radius:50%!important;display:grid!important;place-items:center!important;
+    border:0!important;box-sizing:border-box!important;
+  }
+  body.hax-modern #attachBtn{order:1!important}
+  body.hax-modern #micBtn{order:3!important}
+  body.hax-modern #sendBtn{order:4!important}
+  body.hax-modern #attachBtn{background:transparent!important}
+  body.hax-modern #micBtn{background:transparent!important}
+  body.hax-modern #sendBtn{background:#30363c!important;color:#fff!important}
+  html[data-theme="dark"] body.hax-modern #sendBtn{background:#dfe3e6!important;color:#1b1e22!important}
+  body.hax-modern #promptClearBtn{right:46px!important;top:50%!important;transform:translateY(-50%)!important}
+  body.hax-modern #modelPickerBtn{display:none!important}
+}
+@media(max-width:380px){
+  body.hax-modern #chatForm{left:5px!important;right:5px!important;width:calc(100% - 10px)!important}
+  body.hax-modern #attachBtn,body.hax-modern #micBtn{flex-basis:32px!important;width:32px!important;min-width:32px!important;height:32px!important;min-height:32px!important}
+  body.hax-modern #sendBtn{flex-basis:34px!important;width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important}
+}
+/* Synchronized mobile workspace controls */
+@media(max-width:760px){
+  body.hax-modern .mobile-drawer #mobileAppMakerBtn,
+  body.hax-modern .mobile-drawer #mobileDecodingPartnerBtn,
+  body.hax-modern .mobile-drawer #mobileCodeWriterBtn{display:flex!important}
+  body.hax-modern #chatForm{bottom:calc(16px + var(--hx-safe-bottom,0px))!important}
+  body.hax-modern #chatForm .input-wrap{border:0!important;border-radius:999px!important}
+}
+@media(max-width:380px){body.hax-modern #chatForm{bottom:calc(14px + var(--hx-safe-bottom,0px))!important}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.001ms!important;transition-duration:.001ms!important}}

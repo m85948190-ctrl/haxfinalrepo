@@ -1,0 +1,55 @@
+/* HAxBRO phone compatibility pass — loaded last so mobile fixes win without changing desktop. */
+html,body{max-width:100%;overflow-x:hidden}
+#accountLoginBtn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 12px;border:1px solid rgba(39,216,242,.42);border-radius:10px;color:#7cecff;text-decoration:none;font-size:10px;font-weight:800;letter-spacing:.06em;white-space:nowrap}
+#accountLoginBtn:hover{background:rgba(39,216,242,.1)}
+.mobile-account-login{display:flex!important;align-items:center;justify-content:space-between;gap:10px;text-decoration:none!important}
+.mobile-account-login small{display:block;color:#75dff0;font-size:9px}
+@media(max-width:760px){
+ html,body{width:100%;max-width:100%;overflow-x:hidden!important}
+ body.hax-modern{min-width:0!important;width:100%!important;overscroll-behavior-x:none}
+ body.hax-modern .topbar{width:100%!important;max-width:100vw!important;padding-left:58px!important;padding-right:10px!important}
+ body.hax-modern .brand{min-width:0!important;max-width:calc(100vw - 90px)!important}
+ body.hax-modern .brand strong{font-size:18px!important}
+ body.hax-modern #menuBtn.mobile-menu{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;touch-action:manipulation}
+ body.hax-modern .app-shell{display:flex!important;width:100%!important;min-width:0!important;max-width:100vw!important;height:calc(100dvh - 62px)!important;min-height:0!important;overflow:hidden!important}
+ body.hax-modern .chat-panel{flex:1 1 auto!important;width:100%!important;min-width:0!important;max-width:100%!important;min-height:0!important;height:100%!important;overflow:hidden!important}
+ body.hax-modern .messages{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ body.hax-modern .messages img,body.hax-modern .messages video,body.hax-modern .messages iframe,body.hax-modern .messages table{max-width:100%!important}
+ body.hax-modern .messages pre,body.hax-modern .messages .code-block,body.hax-modern .messages .hax-code-block{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ body.hax-modern .messages code{overflow-wrap:anywhere}
+ body.hax-modern .composer{max-width:calc(100vw - 16px)!important;min-width:0!important;box-sizing:border-box!important;touch-action:manipulation}
+ body.hax-modern .composer button,body.hax-modern .mobile-drawer button,body.hax-modern .mobile-drawer a{touch-action:manipulation}
+ body.hax-modern #mobileDrawer{position:fixed!important;inset:0!important;max-width:100vw!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;overflow:hidden!important}
+ body.hax-modern .mobile-drawer-content{min-height:0!important;max-height:calc(100dvh - 60px)!important;overflow-y:auto!important;overflow-x:hidden!important;padding-bottom:calc(22px + env(safe-area-inset-bottom))!important;-webkit-overflow-scrolling:touch}
+ body.hax-modern .mobile-drawer-content section,body.hax-modern .mobile-settings{min-width:0!important;max-width:100%!important}
+ body.hax-modern .mobile-drawer-content .maker-link{min-height:46px!important;width:100%!important;max-width:100%!important;white-space:normal!important;overflow-wrap:anywhere}
+ body.hax-modern .mobile-theme-switch{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ body.hax-modern .mobile-theme-switch button{min-height:44px!important}
+ body.hax-modern .install-card,body.hax-modern .art-generation-card,body.hax-modern .code-preview-card,body.hax-modern .modal-card,body.hax-modern [role=dialog]{box-sizing:border-box!important;width:min(100vw - 20px,620px)!important;min-width:0!important;max-width:calc(100vw - 20px)!important;max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;overflow-x:hidden!important}
+ body.hax-modern .install-choice-grid,body.hax-modern .art-provider-grid{grid-template-columns:minmax(0,1fr)!important}
+ body.hax-modern input,body.hax-modern textarea,body.hax-modern select{max-width:100%;font-size:16px!important}
+ body.hax-modern button,body.hax-modern a{ -webkit-tap-highlight-color:transparent}
+ body.hax-modern .hax-command-shortcuts{max-width:100%!important;overflow-x:auto!important}
+ body.hax-modern .hax-command-shortcuts button{flex:0 0 auto!important}
+ body.hax-modern .kai-card,body.hax-modern .source-panel,body.hax-modern .code-lab{max-width:100%!important;min-width:0!important}
+ body.hax-modern .mobile-drawer-head{padding-top:max(10px,env(safe-area-inset-top))!important}
+}
+@media(max-width:430px){
+ body.hax-modern .brand strong{font-size:16px!important}
+ body.hax-modern .brand small{font-size:7px!important}
+ body.hax-modern .hero-capabilities{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ body.hax-modern .messages{padding-left:10px!important;padding-right:10px!important}
+}
+@media(max-width:360px){
+ body.hax-modern .hero-welcome h1{font-size:22px!important}
+ body.hax-modern .hero-welcome{padding:16px 12px!important}
+ body.hax-modern .hero-chips{gap:5px!important;flex-wrap:wrap!important}
+ body.hax-modern .hero-chips span{font-size:8px!important}
+}
+@media(orientation:landscape) and (max-height:500px) and (max-width:900px){
+ body.hax-modern .topbar{height:48px!important;min-height:48px!important}
+ body.hax-modern .app-shell{height:calc(100dvh - 48px)!important}
+ body.hax-modern .messages{padding-bottom:100px!important}
+ body.hax-modern #chatForm.composer{bottom:max(4px,env(safe-area-inset-bottom))!important}
+}
+@media(prefers-reduced-motion:reduce){body.hax-modern *,body.hax-modern *:before,body.hax-modern *:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

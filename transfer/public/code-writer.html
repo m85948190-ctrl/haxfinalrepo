@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f7f5"><title>HAxBRO Code Writer</title>
+<link rel="stylesheet" href="/code-writer/style.css"><link rel="stylesheet" href="/code-writer/understanding.css">
+</head>
+<body>
+<header class="topbar"><a class="wordmark" href="/">HAxBRO <span>CODE WRITER</span></a><div class="topmeta"><span class="offline-dot"></span> UNDERSTANDING + CODE ENGINE <span class="divider">/</span> NO API · NO MODEL</div></header>
+<main class="shell">
+<section class="intro"><p class="eyebrow">INDEPENDENT DEVELOPMENT ENGINE</p><h1>Write code.<br><span>Make it real.</span></h1><p class="lede">A two-stage independent builder: a language-understanding engine turns your request into a project blueprint, then the Code Writer generates supported source files. No external model or API is used.</p></section>
+<section class="workspace">
+<aside class="controls">
+<div class="section-label">01 / DEFINE YOUR BUILD</div>
+<label class="field-label" for="projectName">Project name</label><input id="projectName" class="text-input" placeholder="e.g. Personal portfolio">
+<label class="field-label" for="language">Language</label><select id="language" class="text-input"><option value="python">Python</option><option value="html">HTML + CSS + JavaScript</option></select>
+<div id="styleWrap"><label class="field-label" for="design">HTML design direction</label><select id="design" class="text-input"><option value="minimal">Minimal — clean and precise</option><option value="editorial">Editorial — expressive typography</option><option value="dashboard">Dashboard — structured workspace</option><option value="dark">Dark — monochrome night</option></select></div>
+<label class="field-label" for="request">What should the code do?</label><textarea id="request" class="prompt" rows="6" placeholder="Describe the program or website you want. Be specific about its behavior, inputs, and expected result."></textarea>
+<button id="generate" class="primary-button">Generate project <span>↗</span></button>
+<p class="micro">Generation runs locally using built-in code patterns. No remote model or API is called.</p>
+<div id="status" class="status" role="status">Ready when you are.</div>
+<div id="understanding" class="understanding" hidden><b>UNDERSTANDING ENGINE</b><p id="blueprintText"></p><small id="blueprintMeta"></small></div>
+<div class="section-label learning-label">02 / LOCAL LEARNING</div>
+<p class="learning-copy">Teach the engine a correction or coding pattern. Notes are saved only in this browser and can be reused as project references.</p>
+<label class="field-label" for="lesson">Your correction or lesson</label><textarea id="lesson" class="text-input lesson" rows="3" placeholder="Example: In my Python projects, use pathlib instead of os.path."></textarea>
+<button id="saveLesson" class="secondary-button">Save learning note</button>
+<div class="learn-count"><span id="learnCount">0</span> saved local notes</div>
+</aside>
+<section class="output">
+<div class="output-head"><div><div class="section-label">03 / GENERATED PROJECT</div><h2 id="outputTitle">Your workspace</h2><p id="outputSub">Generated files will appear here.</p></div><div class="output-actions"><button id="downloadZip" class="secondary-button" disabled>Download project</button></div></div>
+<div class="stats"><div><span>FILES</span><strong id="fileCount">0</strong></div><div><span>LINES</span><strong id="lineCount">0</strong></div><div><span>ENGINE</span><strong>LOCAL 2.0</strong></div></div>
+<div class="file-layout"><nav id="fileList" class="file-list" aria-label="Project files"><div class="empty-files">No files yet</div></nav><div class="editor-wrap"><div class="editor-toolbar"><span id="activeFile">SOURCE EDITOR</span><div><button id="copyFile" disabled>Copy</button><button id="downloadFile" disabled>Download</button></div></div><textarea id="source" class="source" spellcheck="false" aria-label="Generated source code" placeholder="Your generated source code will appear here."></textarea></div></div>
+<div class="review"><div class="review-title">LOCAL STRUCTURAL REVIEW <span id="reviewState">NOT RUN</span></div><div id="reviewItems" class="review-items"><p>Generate a project to run local checks.</p></div></div>
+<div id="previewPanel" class="preview-panel" hidden><div class="preview-title">LIVE HTML PREVIEW <span>LOCAL SANDBOX</span></div><iframe id="preview" title="Generated HTML preview" sandbox="allow-scripts"></iframe></div>
+</section>
+</section>
+<section class="bottom-note"><strong>Honest by design.</strong> The Understanding Engine uses grammar, phrase matching, feature extraction and dependency mapping—not a trained AI model. It produces a structured blueprint for the Code Writer. Generated projects remain limited to implemented architectures; backend services and genuine AI inference are not fabricated.</section>
+<footer><span>HAxBRO AI · INDEPENDENT CODE WRITER</span><span>Projects stay on this device unless you export them.</span></footer>
+</main>
+<script src="/code-writer/understanding.js"></script><script src="/code-writer/blueprint-builder.js"></script><script src="/code-writer/engine.js"></script><script src="/code-writer/app.js"></script>
+</body></html>

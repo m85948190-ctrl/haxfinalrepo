@@ -1,0 +1,35 @@
+/* Unified Ask / Build / Search workspace */
+/* Keep existing specialist and creation tools intact; only replace the legacy mode selector. */
+.sidebar .mode-card,.mobile-drawer .mode-card{display:none!important}
+.haxbro-mode-dock{user-select:none;-webkit-user-select:none}
+.haxbro-mode-capsule{touch-action:pan-y}
+.chat-panel{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.chat-panel>.chat-head{flex:0 0 52px}
+.chat-panel>.messages{flex:1 1 auto;height:auto;min-height:0}
+.chat-panel>.haxbro-mode-dock{flex:0 0 auto}
+.chat-panel>.haxbro-mode-stage{flex:1 1 auto;min-height:0}
+.chat-panel>.composer{flex:0 0 auto}
+.chat-panel>.hint{flex:0 0 auto}
+.haxbro-mode-dock{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;flex:0 0 auto;padding:12px 16px 10px;position:relative;z-index:30}
+.haxbro-xpro-launch{min-height:38px;padding:0 15px;border:1px solid rgba(35,145,180,.32);border-radius:999px;background:rgba(20,150,190,.08);color:var(--text-strong,#15516a);font:750 11px/1 system-ui,sans-serif;letter-spacing:.03em;white-space:nowrap;cursor:pointer;box-shadow:0 3px 12px rgba(20,100,130,.07)}
+.haxbro-xpro-launch:hover{background:rgba(20,150,190,.14);border-color:rgba(35,145,180,.55)}
+.haxbro-mode-capsule{--active-index:0;position:relative;display:grid;grid-template-columns:repeat(3,minmax(76px,1fr));gap:3px;width:min(100%,360px);padding:4px;border:1px solid rgba(125,145,170,.24);border-radius:999px;background:rgba(115,130,150,.12);box-shadow:inset 0 1px 4px rgba(0,0,0,.08),0 5px 20px rgba(0,0,0,.06);isolation:isolate}
+.haxbro-mode-capsule button{position:relative;z-index:2;min-height:38px;border:0;border-radius:999px;background:transparent;color:var(--text,#687385);font:700 13px/1 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;transition:color .22s ease}
+.haxbro-mode-capsule button.active{color:var(--text-strong,#111827)}
+.haxbro-capsule-indicator{position:absolute;z-index:1;top:4px;bottom:4px;left:4px;width:calc((100% - 8px - 6px)/3);border-radius:999px;background:var(--surface,#fff);box-shadow:0 2px 9px rgba(20,30,50,.13),inset 0 0 0 1px rgba(100,120,150,.13);transform:translateX(calc(var(--active-index)*100% + var(--active-index)*3px));transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+.haxbro-mode-capsule button:focus-visible{outline:2px solid #22b8cf;outline-offset:2px}
+.haxbro-mode-capsule button:nth-child(2).active~.haxbro-capsule-indicator{transform:translateX(calc(100% + 3px))}
+.haxbro-mode-capsule button:nth-child(3).active~.haxbro-capsule-indicator{transform:translateX(calc(200% + 6px))}
+.haxbro-mode-stage{position:relative;flex:1 1 auto;min-height:0;overflow:hidden}
+.haxbro-mode-stage[hidden],.haxbro-mode-pane[hidden]{display:none!important}
+.haxbro-mode-pane{position:absolute;inset:0;min-height:0;overflow:hidden}
+.haxbro-mode-frame{display:block;width:100%;height:100%;border:0;background:#090d16}
+/* XPro is a separate specialist workspace and is never mounted inside Search. */
+.chat-panel.haxbro-mode-build #messages{display:none!important}
+.chat-panel.haxbro-mode-build #chatForm,.chat-panel.haxbro-mode-build #chatForm[hidden]{display:none!important;visibility:hidden!important;pointer-events:none!important;position:static!important;z-index:auto!important}
+.chat-panel.haxbro-mode-build #haxbroModeStage:not([hidden]){display:block!important;position:relative!important;flex:1 1 auto!important;min-height:0!important;overflow:hidden!important}
+.chat-panel.haxbro-mode-build .hint{display:none!important}
+.chat-panel.haxbro-mode-search #messages{display:flex!important}
+.chat-panel.haxbro-mode-search #chatForm{display:flex!important}
+.chat-panel.haxbro-mode-search .hint{display:block!important}
+@media(max-width:700px){.haxbro-mode-dock{padding:9px 12px 8px}.haxbro-mode-capsule{width:min(100%,340px)}.haxbro-mode-capsule button{min-height:36px;font-size:12px}.haxbro-mode-stage{min-height:0}}

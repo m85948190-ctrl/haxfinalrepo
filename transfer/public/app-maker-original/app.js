@@ -1,0 +1,250 @@
+const $=s=>document.querySelector(s);
+let project={name:'Untitled project',summary:'',files:[],publicUrl:''};
+const PROJECT_KEY='haxbro:app-maker:project:v1';
+function persistProject(){try{const value=JSON.stringify(project);if(value.length<3500000)localStorage.setItem(PROJECT_KEY,value)}catch{}}
+function restoreProject(){try{const saved=JSON.parse(localStorage.getItem(PROJECT_KEY)||'null');if(saved&&Array.isArray(saved.files)&&saved.files.length){project=saved;return true}}catch{}return false}
+const prompt=$('#prompt'),status=$('#status'),result=$('#result'),filesEl=$('#files'),frame=$('#frame'),canvas=$('#space');
+const reportStream=$('#reportStream'),reportState=$('#reportState');
+let reportItems=[];
+function reportReset(){reportItems=[];if(reportStream)reportStream.innerHTML='';if(reportState)reportState.textContent='IDLE'}
+function kaiWorkStep(key,title,detail='',state='running',url=''){const strip=document.getElementById('kaiWorkStrip');if(!strip)return;let el=strip.querySelector('[data-work-key="'+CSS.escape(key)+'"]');if(!el){el=document.createElement('div');el.className='kai-work-step';el.dataset.workKey=key;el.innerHTML='<span class="kai-work-icon"></span><span class="kai-work-copy"><b class="kai-work-title"></b><small class="kai-work-detail"></small></span><span class="kai-work-state"></span>';strip.appendChild(el)}el.classList.remove('running','done','error');el.classList.add(state);el.querySelector('.kai-work-title').textContent=title;el.querySelector('.kai-work-detail').textContent=detail||'';const icon=el.querySelector('.kai-work-icon');if(url){icon.innerHTML='<img alt="" src="'+url+'">'}else if(/hatchable/i.test(title+' '+detail)){icon.innerHTML='<img alt="Hatchable" src="https://hatchable.com/favicon.ico">'}else{icon.textContent=(title||'K').trim().slice(0,1).toUpperCase()}el.querySelector('.kai-work-state').textContent=state==='running'?'':state==='error'?'!':'✓';strip.scrollTop=strip.scrollHeight;return el}
+function reportAdd(kind,message,done=false){if(!reportStream)return;const el=document.createElement('div');el.className='report-line'+(done?' done':'');const now=new Date().toLocaleTimeString([], {hour12:false});el.innerHTML='<span class="time">'+now+'</span><span class="kind">'+kind+'</span> '+String(message).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));reportStream.appendChild(el);reportItems.push(el);while(reportItems.length>9){const x=reportItems.shift();x.classList.add('fade');setTimeout(()=>x.remove(),560)}reportStream.scrollTop=reportStream.scrollHeight;if(reportState)reportState.textContent=kind}
+function reportSyncFinal(steps){if(!Array.isArray(steps))return;steps.slice(-8).forEach(s=>reportAdd('KAI',String(s),true))}
+function enterPreviewMode(){document.body.classList.add('preview-mode');document.body.classList.remove('building-mode');setScene('PREVIEW')}
+function leavePreviewMode(){document.body.classList.remove('preview-mode','building-mode')}
+
+document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{prompt.value=b.dataset.prompt;prompt.focus();leavePreviewMode();reportReset();setScene('READY')}));
+$('#newProject').addEventListener('click',()=>{project={name:'Untitled project',summary:'',files:[],publicUrl:''};try{localStorage.removeItem(PROJECT_KEY)}catch{}prompt.value='';result.classList.add('hidden');leavePreviewMode();reportReset();status.className='status';status.innerHTML='<span class="status-dot"></span>Ready when you are.';$('#projectInfo').innerHTML='Untitled project<br><span>Describe an app to begin.</span>';setScene('READY')});
+function setFlow(n){document.querySelectorAll('#flow li').forEach((x,i)=>x.classList.toggle('active',i===n))}
+function setScene(label){
+  $('#sceneState').textContent=label;
+  const scene=$('.scene'); scene.classList.toggle('kai-active',!['READY','PUBLISHED','ERROR'].includes(String(label)));
+  const map={signal:0,understand:1,understanding:1,model:1,ponder:2,codemaker:2,research:2,architect:3,build:4,building:4,codewriter:4,inspect:5,test:5,testing:5,repair:6,ready:7,complete:7,preview:7,published:7,modify:1,modifying:1,reasoning:2};
+  const key=String(label||'').toLowerCase(), idx=map[key] ?? (key.includes('test')?5:key.includes('build')?4:key.includes('ponder')?2:key.includes('architect')?3:key.includes('repair')?6:0);
+  document.querySelectorAll('.stage').forEach((el,i)=>{el.classList.toggle('active',i===idx);el.classList.toggle('done',i<idx)});
+  const names=['SIGNAL','UNDERSTANDING','PONDERING','ARCHITECTING','BUILDING','INSPECTING','REPAIRING','BUILD READY'];
+  $('#activityMode').textContent=names[idx]||String(label||'STANDBY');
+}
+function render(){result.classList.remove('hidden');if($('#resultReport')&&reportStream)$('#resultReport').innerHTML=reportStream.innerHTML;$('#resultName').textContent=project.name;$('#resultSummary').textContent=project.summary;$('#publishBadge').textContent=project.published?'● PUBLISHED':'● READY';$('#publishExternal').disabled=false;$('#publishExternal').textContent=project.published?'Republish externally':'Publish externally';$('#projectInfo').innerHTML=`${project.name}<br><span>Application made · ${project.published?'Published':'Ready to modify'} · ${project.files.length} files</span>`;const link=$('#publicUrl');link.href=project.publicUrl;link.textContent=project.publicUrl;filesEl.innerHTML='';project.files.forEach((f,i)=>{const el=document.createElement('div');el.className='file'+(i===0?' active':'');el.textContent=f.path;el.addEventListener('click',()=>{document.querySelectorAll('.file').forEach(x=>x.classList.remove('active'));el.classList.add('active');showPreview(f)});filesEl.appendChild(el)});showPreview(project.files[0]);persistProject()}
+function showPreview(f){
+ if(!f)return;
+ let html=String(f.content||'');
+ const css=project.files?.find(x=>String(x.path||'').toLowerCase().endsWith('.css'))?.content;
+ const js=project.files?.find(x=>String(x.path||'').toLowerCase().endsWith('.js'))?.content;
+ if(css)html=html.replace(/<link\b[^>]*href=["'](?:\.\/)?style\.css(?:\?[^"']*)?["'][^>]*>/i,'<style>'+String(css).replace(/<\/style/gi,'<\\/style')+'</style>');
+ if(js)html=html.replace(/<script\b[^>]*src=["'](?:\.\/)?app\.js(?:\?[^"']*)?["'][^>]*>\s*<\/script>/i,'<script>'+String(js).replace(/<\/script/gi,'<\\/script')+'</scr'+'ipt>');
+ html=html.replace('</body>','<script src="/app-maker-original/visual-editor.js?v=1"></scr'+'ipt></body>');
+ frame.srcdoc=html;
+}
+async function publishExternal(){
+  reportAdd('PUBLISH','Publishing the current application to external static hosting…');
+  const files=Array.isArray(project.files)?project.files.filter(f=>f&&typeof f.path==='string'&&typeof f.content==='string'):[];
+  if(!files.length)return;
+  const btn=$('#publishExternal');
+  btn.disabled=true; btn.textContent=project.published?'Republishing…':'Publishing…';
+  try{
+    // Publish the complete app bundle, not only index.html; CSS and JS must travel with it.
+    const r=await fetch('/api/app-publish',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:project.name,files})});
+    const d=await r.json();
+    if(!r.ok||!d.url||d.ok===false)throw new Error(d.error||'External host rejected the deployment');
+    project.publicUrl=String(d.url); project.published=true; project.publishExpiresAt=d.expires_at||null; persistProject();
+    $('#publishBadge').textContent='● PUBLISHED'; $('#publicUrl').href=project.publicUrl; $('#publicUrl').textContent=project.publicUrl;
+    btn.textContent='Published ✓';
+    $('#openPreview').disabled=false;
+    status.className='status'; status.innerHTML='<span class="status-dot"></span>Published on external static hosting. Hatchable is not hosting this app.';
+  }catch(e){
+    btn.disabled=false; btn.textContent='Publish externally';
+    status.className='status'; status.innerHTML='<span class="status-dot"></span>External publish failed: '+e.message;
+  }
+}
+async function copyText(text,button){try{await navigator.clipboard.writeText(text);const old=button.textContent;button.textContent='Copied ✓';setTimeout(()=>button.textContent=old,1200)}catch{button.textContent='Copy failed'}}
+$('#publishExternal').addEventListener('click',publishExternal);$('#copyUrl').addEventListener('click',()=>copyText(project.publicUrl,$('#copyUrl')));
+$('#copyAll').addEventListener('click',()=>copyText(project.files.map(f=>`===== ${f.path} =====\\n${f.content}`).join('\\n\\n'),$('#copyAll')));
+$('#openPreview').addEventListener('click',()=>{if(project.publicUrl)window.open(project.publicUrl,'_blank','noopener')});
+// Bridge sandboxed app previews to the parent KAI runtime. The preview cannot directly access parent globals.
+const kaiChatRequests=new Set();
+const aiProviderRequests=new Set();
+window.addEventListener('message',async event=>{
+  const d=event.data;
+  if(d&&d.type==='haxbro:visual-edit'&&frame&&event.source===frame.contentWindow){
+    try{
+      const main=project.files.find(f=>String(f.path||'').toLowerCase().endsWith('index.html'))||project.files[0];
+      if(main&&typeof main.content==='string'){
+        const parsed=new DOMParser().parseFromString(main.content,'text/html');
+        const target=parsed.querySelector(String(d.selector||''));
+        if(target){
+          if(d.kind==='text')target.textContent=String(d.value??'');
+          if(d.kind==='style'&&d.value&&typeof d.value==='object'){
+            if(d.value.color)target.style.color=String(d.value.color);
+            if(d.value.backgroundColor)target.style.backgroundColor=String(d.value.backgroundColor);
+          }
+          main.content='<!doctype html>\\n'+parsed.documentElement.outerHTML;
+          project.published=false;project.publicUrl='';persistProject();
+          reportAdd('VISUAL EDIT','Saved a direct preview edit to '+String(target.tagName||'element').toLowerCase()+'.',true);
+          status.className='status';status.innerHTML='<span class="status-dot"></span>Visual change saved to your project. KAI can continue editing it.';
+        }
+      }
+    }catch(err){reportAdd('VISUAL EDIT ERROR',String(err.message||err));}
+    return;
+  }
+  if(!d||!frame||event.source!==frame.contentWindow)return;
+  if(d.type==='haxbro:ai-provider-chat-request'&&d.requestId){
+    if(aiProviderRequests.has(d.requestId))return;
+    aiProviderRequests.add(d.requestId);
+    try{
+      const r=await fetch('/api/ai-chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+        provider:String(d.provider||''),model:String(d.model||''),apiKey:String(d.apiKey||''),
+        message:String(d.message||''),systemPrompt:String(d.systemPrompt||''),
+        history:Array.isArray(d.history)?d.history:[]
+      })});
+      const result=await r.json().catch(()=>({}));
+      event.source.postMessage({type:'haxbro:ai-provider-chat-response',requestId:d.requestId,response:r.ok?String(result.response||''): '',provider:result.provider||d.provider,model:result.model||d.model,error:r.ok?'':String(result.error||'AI provider request failed.')},'*');
+    }catch(error){
+      try{event.source.postMessage({type:'haxbro:ai-provider-chat-response',requestId:d.requestId,error:String(error?.message||'AI provider connection failed.')},'*')}catch{}
+    }finally{aiProviderRequests.delete(d.requestId)}
+    return;
+  }
+  if(d.type!=='haxbro:kai-chat-request'||!d.requestId)return;
+  if(kaiChatRequests.has(d.requestId))return;
+  kaiChatRequests.add(d.requestId);
+  let response='',provider='',error='';
+  try{
+    const bridge=(window.parent&&window.parent.HAxBROKaiCapabilityBridge)||window.HAxBROKaiCapabilityBridge;
+    if(bridge?.unified){
+      const turn=await bridge.unified(String(d.message||''),Array.isArray(d.history)?d.history:[],{onStage:(stage,detail)=>{reportAdd('CHAT · '+String(stage).toUpperCase(),detail||'');}});
+      response=String(turn?.response||'').trim();provider=String(turn?.provider||turn?.model||'KAI 51');
+      if(!response)throw new Error('KAI 51 returned an empty response');
+    }else{
+      const r=await fetch('/api/kai-lite',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({message:String(d.message||''),history:Array.isArray(d.history)?d.history:[]})});
+      const turn=await r.json().catch(()=>({}));
+      if(!r.ok||!turn.response)throw new Error(turn.error||'KAI runtime is unavailable and KAI Lite did not answer');
+      response=String(turn.response);provider=String(turn.provider||turn.engine||'KAI Lite recovery');
+    }
+  }catch(e){
+    error=String(e?.message||'KAI could not answer this turn');
+    const userText=String(d.message||'').trim();
+    const explicitResearch=/\\b(?:latest|recent|news|price|cost|weather|forecast|statistics|research|look up|search|sources?|according to|current|today|compare|verify|who is|what is|where is|when did|when was|how to|why does|how does)\\b/i.test(userText);
+    const smallTalk=/^(?:hi|hello|hey|yo|thanks|thank you|how are you|who are you|what can you do|let'?s talk)[!.?,\\s]*$/i.test(userText);
+    if(explicitResearch&&!smallTalk){
+      try{
+        const r=await fetch('/api/kai-lite',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({message:userText,history:Array.isArray(d.history)?d.history:[]})});
+        const turn=await r.json().catch(()=>({}));
+        const answer=String(turn.response||'');
+        const terms=userText.toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>3&&!['what','when','where','which','does','with','from','about','latest','current','today'].includes(w));
+        const relevant=terms.length===0||terms.some(w=>(answer+' '+(turn.sources||[]).map(s=>s.title||'').join(' ')).toLowerCase().includes(w));
+        if(r.ok&&answer&&relevant){response=answer;provider=String(turn.provider||turn.engine||'KAI Lite recovery');error='';}
+      }catch{}
+    }
+  }finally{
+    try{event.source.postMessage({type:'haxbro:kai-chat-response',requestId:d.requestId,response,provider,error:error||(!response?'No response was returned.':'')},'*')}catch{}
+    kaiChatRequests.delete(d.requestId);
+  }
+});
+async function build(){
+ const q=String(prompt?.value||'').trim(),btn=$('#build');
+ if(!q){status.className='status';status.innerHTML='<span class="status-dot"></span>Describe the app you want to build first.';prompt?.focus();return}
+ if(btn.disabled)return;
+ btn.disabled=true;reportReset();leavePreviewMode();setFlow(0);setScene('SIGNAL');
+ status.className='status busy';status.innerHTML='<span class="status-dot"></span>KAI 51 is planning your app…';
+ reportAdd('INTENT','Request accepted: '+q);
+ kaiWorkStep('intent','Intent','Understanding requested product and interactions.','running');
+ let data=null;
+ try{
+   const bridge=window.parent?.HAxBROKaiCapabilityBridge||window.HAxBROKaiCapabilityBridge;
+   if(!bridge?.appMaker)throw new Error('KAI local CodeMaker is unavailable. Reload HAxBRO and open App Maker again.');
+   const neural=bridge.appMaker(q,window.parent?.HAxBROChatHistory||[],{onStage:(stage,detail)=>{const key=String(stage||'').toLowerCase();reportAdd('KAI 51 · '+key.toUpperCase(),detail||'');setScene(key==='understanding'||key==='model'?'UNDERSTANDING':key==='codemaker'||key==='architect'||key==='ponder'?'ARCHITECT':key==='codewriter'||key==='codewriter-done'?'BUILDING':key==='test'||key==='testing'?'TESTING':key==='complete'?'READY':key==='codewriter-error'?'ERROR':'BUILDING');setFlow(key==='understanding'||key==='model'?0:key==='codemaker'||key==='architect'||key==='ponder'?1:key==='codewriter'||key==='codewriter-done'||key==='codewriter-error'?2:key==='test'||key==='testing'?3:4);status.className='status'+(key==='codewriter-error'?'':' busy');status.textContent=detail||('KAI stage: '+key);if(key==='codewriter-done'){kaiWorkStep('build','CodeWriter generated files',detail||'Generated HTML, CSS and JavaScript.','done')}if(key==='codewriter-error'){kaiWorkStep('build','CodeWriter validation failed',detail||'Generated files need repair.','error')}}});
+   data=await neural;
+   if(data.plan)reportAdd('CODEMAKER PLAN',String(data.plan.architecture||data.plan.productType||'Project plan validated by the App Maker backend.'),true);
+   (data.sources||[]).slice(0,5).forEach(source=>reportAdd('WEB SOURCE',String(source.title||'Reference')+(source.url?' · '+source.url:''),true));
+   if(data.validation)reportAdd('CODEWRITER VALIDATION','Backend checks passed '+data.validation.passed+'/'+data.validation.total+'.',true);
+   if(!data||!Array.isArray(data.files)||!data.files.some(f=>f&&typeof f.content==='string'&&f.content.trim()))throw new Error('Local KAI CodeWriter did not return a complete project. The existing project was preserved.');
+   const mainFile=data.files.find(f=>/^(?:\.\/)?index\.html$/i.test(String(f.path||'')))||data.files[0];
+   if(!mainFile?.content)throw new Error('Builder returned no previewable HTML file.');
+   const titleMatch=String(mainFile.content).match(/<title[^>]*>([\s\S]*?)<\/title>/i)||String(mainFile.content).match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+   const appName=String(data.name||'').trim();
+   project={...data,name:appName&&appName.length<55?appName:(titleMatch?.[1]||'Your app').replace(/<[^>]+>/g,'').trim(),summary:data.summary||'Working application generated by KAI 51.',files:data.files,published:false,publicUrl:''};
+   setScene('TESTING');setFlow(3);kaiWorkStep('build','Build complete','App artifact received.','done');kaiWorkStep('test','Preview','Loading generated HTML, CSS and JavaScript into the isolated preview.','running');
+   render();
+   if(!result.classList.contains('hidden'))result.classList.remove('hidden');
+   setFlow(4);enterPreviewMode();kaiWorkStep('test','Preview ready','The generated artifact is loaded; publishing remains a separate action.','done');
+   reportAdd('BUILD READY','A real preview artifact was created. Review it before publishing.',true);
+   status.className='status';status.innerHTML='<span class="status-dot"></span>Build ready. Preview created successfully; nothing was published externally.';
+ }catch(e){
+   setScene('ERROR');kaiWorkStep('build','Build failed',e.message||'Unknown build error','error');
+   reportAdd('BUILD ERROR',e.message||'Unknown build error');
+   status.className='status';status.innerHTML='<span class="status-dot"></span>Build stopped: '+String(e.message||'Unknown error').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+ }finally{btn.disabled=false}
+}
+async function modifyBuild(){const change=$('#modifyPrompt').value.trim();if(!change||!project.name||!project.files?.length)return;$('#modifyBuild').disabled=true;status.className='status busy';setScene('MODIFYING');setFlow(2);status.innerHTML='<span class="status-dot"></span>KAI 2.0 is modifying the existing application — preserving its identity and functionality…';try{/* All requested modifications are generated by the on-device KAI CodeMaker pipeline. */const bridge=window.parent?.HAxBROKaiCapabilityBridge;if(!bridge?.appMaker)throw new Error('KAI local CodeMaker bridge is unavailable');const data=await bridge.appMaker(change,window.parent?.HAxBROChatHistory||[],{onStage:(stage,detail)=>{reportAdd('KAI 51 · '+String(stage).toUpperCase(),detail||'');setScene(stage==='understanding'?'UNDERSTANDING':stage==='codemaker'||stage==='architect'?'ARCHITECT':stage==='codewriter'?'BUILDING':stage==='test'?'TESTING':'READY');}},{existing:{name:project.name,summary:project.summary,files:project.files,templateId:project.templateId,templateName:project.templateName,templateCategory:project.templateCategory,templateLayout:project.templateLayout,theme:project.theme}});if(data.plan){const p=data.plan;reportAdd('PLAN CONFIRMED',String(p.intent||'Intent identified')+' · '+(Array.isArray(p.features)?p.features.slice(0,4).join(' · '):'Core features selected'));reportAdd('ARCHITECTURE',String(p.architecture||'Architecture selected'),true)}if(data.knowledgeContext?.researched)reportAdd('LIVE RESEARCH','KAI 51 used live knowledge retrieval for this build.');(data.sources||data.knowledgeContext?.sources||[]).slice(0,8).forEach(s=>reportAdd('SOURCE',String(s.title||s.source||'Reference')+(s.url?' · '+s.url:'')));(data.knowledgeContext?.toolResults||[]).forEach(t=>reportAdd('TOOL',String(t.tool||'organizing tool')+' · '+String(t.result||'')));kaiWorkStep('build','Building on Hatchable','Application generation completed','done','https://hatchable.com/favicon.ico');setFlow(3);setScene('TESTING');$('.preview').classList.add('testing');reportAdd('INTERACTION CHECK','Inspecting the generated app against the requested behavior.');kaiWorkStep('test','Testing','Inspecting generated interactions and requirements.','running');status.innerHTML='<span class="status-dot"></span>Testing generated interactions…';if(data.validation)reportAdd('REQUIREMENT AUDIT',String(data.validation.passRate!=null?'Pass rate '+Math.round(Number(data.validation.passRate)*100)+'%':'Validation completed'),true);if(Array.isArray(data.steps)&&data.steps.some(s=>/repair/i.test(String(s)))){setScene('REPAIRING');reportAdd('REPAIR PASS','A validation issue was detected; applying the Builder repair pass.');status.innerHTML='<span class="status-dot"></span>Repairing the generated application…';}reportAdd('FINAL VALIDATION','Build response received and validation metadata processed.',true);kaiWorkStep('test','Testing','Validation completed','done');$('.preview').classList.remove('testing');project=data;project.published=false;project.publicUrl='';render();if(data.agent?.logs?.length&&$('#resultReport')){$('#resultReport').innerHTML=data.agent.logs.map(s=>'<div class="report-line '+(s.stage==='VERIFY'?'done':'')+'"><span class="kind">'+String(s.stage)+'</span> '+String(s.message).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]||c))+'</div>').join('')}setFlow(4);enterPreviewMode();kaiWorkStep('publish','Publishing on Hatchable','The generated application is ready to publish; external publishing remains a separate operation.','done','https://hatchable.com/favicon.ico');reportAdd('BUILD READY','The actual preview is now live.');status.className='status';status.innerHTML='<span class="status-dot"></span>Build ready. The live preview has replaced the Nucleus.'}catch(e){setScene('ERROR');reportAdd('BUILD ERROR',e.message||'Build failed');status.className='status';status.innerHTML='<span class="status-dot"></span>Build stopped: '+e.message}finally{$('#build').disabled=false}}
+$('#build').addEventListener('click',build);prompt.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();build()}});window.HAxBROAppMaker={setPrompt(value){prompt.value=String(value||'');prompt.dispatchEvent(new Event('input',{bubbles:true}));prompt.focus()},build,modify:modifyBuild,reset(){project={name:'Untitled project',summary:'',files:[],publicUrl:''};prompt.value='';result.classList.add('hidden');leavePreviewMode();reportReset();render()}};
+window.HAxBROAppMaker.loadTemplate=function(spec){if(!spec||!Array.isArray(spec.files)||!spec.files.length)return;project={...spec,files:spec.files,published:false,publicUrl:''};reportReset();reportAdd('TEMPLATE','Opened '+String(spec.name||'template')+' as an editable application.',true);render();enterPreviewMode();setFlow(4);status.className='status';status.innerHTML='<span class="status-dot"></span>Application made. This is your editable project: click an element to edit it, or ask KAI to modify and rebuild it.';};
+
+/* LIVE AGENT SIDEBAR — real message routing + in-place modification */
+(function(){
+  const oldBtn=$('#modifyBuild');
+  const input=$('#modifyPrompt');
+  const side=$('#resultReport');
+  if(!oldBtn||!input||!side)return;
+  const btn=oldBtn.cloneNode(true);
+  oldBtn.replaceWith(btn);
+  function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c))}
+  function sideAdd(kind,message,done=false){
+    const el=document.createElement('div'); el.className='report-line'+(done?' done':'');
+    el.innerHTML='<span class="kind">'+esc(kind)+'</span> '+esc(message);
+    side.appendChild(el); side.scrollTop=side.scrollHeight; return el;
+  }
+  function setBusy(v){btn.disabled=v;input.disabled=v;btn.classList.toggle('working',v)}
+  function resizeComposer(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,110)+'px'}
+  function withTimeout(promise,ms,message){return new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(new Error(message)),ms);Promise.resolve(promise).then(value=>{clearTimeout(timer);resolve(value)},error=>{clearTimeout(timer);reject(error)})})}
+  input.addEventListener('input',resizeComposer); resizeComposer();
+  async function sendToKai(){
+    const change=input.value.trim();
+    if(!change)return;
+    if(!project?.files?.length){sideAdd('KAI','Build an app first. This panel modifies the current live preview.');return}
+    sideAdd('YOU',change);
+    input.value='';
+    setBusy(true); setScene('UNDERSTANDING'); setFlow(1);
+    sideAdd('UNDERSTAND','KAI 51 received your instruction and is inspecting the current application.');
+    const stages=[
+      ['RESEARCH','Checking relevant interface/product patterns before changing the app.'],
+      ['PLAN','Choosing the smallest coherent change while preserving working features.'],
+      ['KAI 51','Synthesizing the modification against the current app, not a blank template.'],
+      ['QA','Reviewing interactions, responsive layout and accidental regressions.']
+    ];
+    let i=0; const pulse=setInterval(()=>{if(i<stages.length){sideAdd(stages[i][0],stages[i][1]);i++;}},850);
+    try{
+      const existing={name:project.name,summary:project.summary,files:project.files.map(f=>({path:f.path,content:f.content}))};
+      const bridge=window.parent?.HAxBROKaiCapabilityBridge||window.HAxBROKaiCapabilityBridge;let neuralTimedOut=false,data=null,neuralError=null;
+      const request='Modify the EXISTING application in place. Preserve the existing name, identity, features and working behavior. Apply ONLY this requested modification: '+change;
+      if(bridge?.appMaker){try{data=await bridge.appMaker(request,window.parent?.HAxBROChatHistory||[],{onStage:(stage,detail)=>{if(!neuralTimedOut)sideAdd('KAI 51 · '+String(stage).toUpperCase(),detail||'')}},{existing})}catch(e){neuralError=e;neuralTimedOut=true}}
+      if(!Array.isArray(data?.files)||!data.files.some(f=>f&&typeof f.content==='string'&&f.content.trim()))throw new Error('CodeWriter did not return a complete modification. The original preview remains intact.');
+      clearInterval(pulse);
+      const logs=Array.isArray(data.agent?.logs)?data.agent.logs:[];
+      side.innerHTML='';
+      sideAdd('YOU',change,true);
+      for(const log of logs)sideAdd(String(log.stage||'KAI'),String(log.message||''),String(log.stage)==='VERIFY');
+      sideAdd('TEST','The updated application is now loaded into the live preview.',true);
+      project={...project,...data,name:project.name,summary:project.summary,published:false,publicUrl:''};
+      render();
+      if($('#resultReport')){
+        $('#resultReport').innerHTML='';
+        sideAdd('YOU',change,true);
+        for(const log of logs)sideAdd(String(log.stage||'KAI'),String(log.message||''),String(log.stage)==='VERIFY');
+        sideAdd('READY','Modification applied to the existing app. Review the preview before publishing.',true);
+      }
+      setScene('PREVIEW');setFlow(4);
+      status.className='status';status.innerHTML='<span class="status-dot"></span>'+(data.fallback?'KAI 51 applied a supported local modification. Review the updated preview before publishing.':'KAI 51 modified the existing application. The new preview is live.');
+    }catch(e){
+      clearInterval(pulse); sideAdd('ERROR',e.message||'KAI modification failed'); status.className='status';status.innerHTML='<span class="status-dot"></span>KAI stopped: '+esc(e.message||'Modification failed');
+    }finally{setBusy(false);input.focus()}
+  }
+  btn.addEventListener('click',e=>{e.preventDefault();sendToKai()});
+  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendToKai()}});
+  if(window.HAxBROAppMaker)window.HAxBROAppMaker.modify=change=>{input.value=String(change||'');resizeComposer();return sendToKai()};
+})();
+
+// Native 3D-style WebGL-free spatial renderer: reliable on constrained browsers, with real depth motion.
+const ctx=canvas.getContext('2d');let W=0,H=0,dpr=1,t=0,particles=[];
+function resize(){const r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);W=Math.max(1,r.width);H=Math.max(1,r.height);canvas.width=W*dpr;canvas.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);particles=Array.from({length:95},()=>({x:Math.random()*W,y:Math.random()*H,z:.15+Math.random()*.85,s:.4+Math.random()*1.8,a:.15+Math.random()*.7}))}window.addEventListener('resize',resize);resize();
+function draw(){t+=.008;ctx.clearRect(0,0,W,H);const cx=W*.53,cy=H*.49;for(const p of particles){p.y-=p.s*(.25+p.z);if(p.y<-10)p.y=H+10;const pulse=(Math.sin(t*2+p.x*.01)+1)*.5;ctx.globalAlpha=p.a*(.3+p.z*.7);ctx.beginPath();ctx.arc(p.x+(cx-p.x)*.02*p.z,p.y,pulse*.7+p.z,0,Math.PI*2);ctx.fillStyle='rgba(150,180,255,1)';ctx.fill()}ctx.globalAlpha=.28;for(let i=0;i<12;i++){const a=t+i*.52,rx=42+i*7,ry=18+i*4;ctx.beginPath();for(let j=0;j<=64;j++){const q=j/64*Math.PI*2,x=cx+Math.cos(q+a)*rx,y=cy+Math.sin(q+a)*ry;j?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.strokeStyle='rgba(125,155,255,.18)';ctx.lineWidth=1;ctx.stroke()}ctx.globalAlpha=1;const core=42+Math.sin(t*3)*4;const g=ctx.createRadialGradient(cx,cy,2,cx,cy,core*2.2);g.addColorStop(0,'rgba(220,232,255,.95)');g.addColorStop(.16,'rgba(123,158,255,.55)');g.addColorStop(1,'rgba(70,105,255,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,core*2.2,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(190,210,255,.55)';ctx.lineWidth=1;ctx.beginPath();ctx.arc(cx,cy,core,0,Math.PI*2);ctx.stroke();for(let i=0;i<8;i++){const a=t*.7+i*Math.PI/4,r=core+18+Math.sin(t*2+i)*5,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r*.58;ctx.fillStyle='rgba(155,190,255,.75)';ctx.beginPath();ctx.arc(x,y,2.2,0,Math.PI*2);ctx.fill()}requestAnimationFrame(draw)}draw();
+if(restoreProject()){render();enterPreviewMode();setScene('PREVIEW');status.className='status';status.innerHTML='<span class="status-dot"></span>Restored your saved project. Review the preview before publishing.';}

@@ -1,0 +1,47 @@
+.kai-workstation{min-height:350px!important;padding:10px!important;background:#10151c!important;color:#eef2f6!important;border:1px solid #303b48!important;border-radius:14px!important;box-shadow:0 16px 38px rgba(4,10,18,.22)!important;overflow:hidden!important}
+.kai-workstation:before,.kai-workstation:after{display:none!important}
+.kai-workstation-top{height:23px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 2px 7px;color:#f4f7fa}
+.kai-workstation-mark{font:800 11px/1 ui-monospace,monospace;letter-spacing:.12em}.kai-workstation-mark b{color:#8edcff;font-weight:800}
+.kai-workstation-sub{margin-left:9px;color:#8492a2;font:600 7px/1 ui-monospace,monospace;letter-spacing:.11em}
+.kai-workstation-live{display:flex;align-items:center;gap:6px;color:#aeb9c6;font:700 7px/1 ui-monospace,monospace;letter-spacing:.1em;white-space:nowrap}
+.kai-workstation-live i{width:5px;height:5px;border-radius:50%;background:#8edcff;box-shadow:0 0 9px #70caff}
+.kai-workstation-stage{position:relative!important;height:285px!important;min-height:285px!important;display:block!important;overflow:hidden!important;border:1px solid #313d49!important;border-radius:10px!important;background:radial-gradient(ellipse at 50% 36%,#354454 0%,#1b2530 48%,#0e141b 100%)!important}
+.kai-workstation-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:2}
+.kai-workstation-hud{position:absolute;z-index:4;left:10px;right:10px;bottom:8px;display:flex;align-items:center;gap:6px;color:#aeb9c6;font:700 7px/1 ui-monospace,monospace;letter-spacing:.11em;pointer-events:none;text-shadow:0 1px 5px #000}
+.kai-hud-dot{width:5px;height:5px;border-radius:50%;background:#8edcff;box-shadow:0 0 8px #8edcff}.kai-hud-right{margin-left:auto;color:#8edcff}
+.kai-workstation-status{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px;padding:0 2px}
+.kai-workstation-action{color:#f2f5f8;font:800 8px/1.2 ui-monospace,monospace;letter-spacing:.12em}.kai-workstation-detail{color:#8d9aa8;font:600 7px/1.2 ui-monospace,monospace;letter-spacing:.06em;text-align:right;max-width:52%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kai-workstation-fallback{display:none;position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 28%,#425366,#151e28 70%)}
+.kai-workstation-fallback-active .kai-workstation-fallback{display:block}.kai-workstation-fallback-active .kai-workstation-canvas{display:none}
+.kai-fb-wall{position:absolute;top:22px;left:13%;right:13%;height:43%;display:flex;gap:7px;align-items:stretch;justify-content:center}
+.kai-fb-wall i{flex:1;border:2px solid #69798a;border-radius:4px;background:repeating-linear-gradient(0deg,transparent 0 17px,#3b85aa 18px 19px),linear-gradient(145deg,#0a1825,#1b3548);box-shadow:0 0 16px #4a9bc433}
+.kai-fb-robot{position:absolute;z-index:2;left:calc(50% - 43px);top:32%;width:86px;height:155px}
+.kai-fb-head{position:absolute;top:0;left:16px;width:54px;height:44px;border:2px solid #b5c1cc;border-radius:13px;background:linear-gradient(145deg,#e8edf2,#657383);box-shadow:inset 0 2px 4px #fff}
+.kai-fb-head i{position:absolute;top:17px;width:6px;height:7px;border-radius:50%;background:#8edcff;box-shadow:0 0 8px #8edcff}.kai-fb-head i:first-child{left:11px}.kai-fb-head i:nth-child(2){right:11px}
+.kai-fb-neck{position:absolute;top:43px;left:37px;width:13px;height:15px;background:#7d8996}
+.kai-fb-body{position:absolute;top:54px;left:10px;width:67px;height:65px;border:2px solid #aab6c2;border-radius:12px;background:linear-gradient(145deg,#e2e8ee,#566575)}
+.kai-fb-arm{position:absolute;top:66px;width:15px;height:62px;border-radius:8px;background:linear-gradient(90deg,#d8e0e8,#647181);transform-origin:top}.kai-fb-arm.left{left:2px;transform:rotate(26deg)}.kai-fb-arm.right{right:2px;transform:rotate(-26deg)}
+.kai-fb-desk{position:absolute;z-index:3;left:7%;right:7%;bottom:24px;height:20px;border:1px solid #778493;background:linear-gradient(#667484,#202b37);box-shadow:0 8px 18px #0008}.kai-fb-desk i{position:absolute;top:18px;width:9px;height:44px;background:#566271}.kai-fb-desk i:first-child{left:8%}.kai-fb-desk i:nth-child(2){right:8%}
+.kai-fb-keyboard{position:absolute;z-index:4;left:43%;bottom:43px;width:65px;height:10px;border:1px solid #7b8b9b;border-radius:3px;background:repeating-linear-gradient(90deg,#17222e 0 5px,#8edcff 6px 7px)}
+.kai-workstation .kai-companion-status{margin-top:7px!important}
+
+.kai-workstation-canvas{touch-action:none;cursor:grab}
+.kai-workstation-canvas:active{cursor:grabbing}
+.kai-workstation-hint{position:absolute;z-index:5;right:10px;top:9px;color:#9aa9b8;font:600 6px/1.2 ui-monospace,monospace;letter-spacing:.09em;opacity:.72;pointer-events:none;text-shadow:0 1px 5px #000}
+.kai-workstation[data-state="thinking"] .kai-workstation-live i,.kai-workstation[data-state="searching"] .kai-workstation-live i,.kai-workstation[data-state="reading"] .kai-workstation-live i{animation:kaiWorkPulse 1s ease-in-out infinite}
+@keyframes kaiWorkPulse{50%{opacity:.3;transform:scale(.72)}}
+@media(max-width:560px){.kai-workstation-hint{font-size:5px;right:7px;top:7px}}
+@media(max-width:900px){.kai-workstation{min-height:315px!important}.kai-workstation-stage{height:250px!important;min-height:250px!important}}
+@media(max-width:560px){.kai-workstation{min-height:285px!important;padding:8px!important}.kai-workstation-stage{height:220px!important;min-height:220px!important}.kai-workstation-sub{display:none}.kai-workstation-live{font-size:6px}}
+@media(prefers-reduced-motion:reduce){.kai-workstation-canvas{animation:none!important}}
+
+/* KAI four-clip robot video states */
+.kai-workstation-stage{background:#080d14!important;isolation:isolate}
+.kai-workstation-video{position:absolute!important;inset:0!important;z-index:2!important;display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;background:#080d14;opacity:1;filter:saturate(.88) contrast(1.04)}
+.kai-workstation-hud{z-index:4!important}
+.kai-workstation-credit{margin-top:5px;color:#8793a0;font:500 7px/1.3 ui-monospace,monospace;letter-spacing:.035em;text-align:right}
+.kai-workstation-credit a{color:#aab7c4;text-decoration:underline;text-underline-offset:2px}
+.kai-workstation-credit a:hover{color:#fff}
+.kai-workstation-hint,.kai-workstation-canvas,.kai-workstation-fallback{display:none!important}
+@media(max-width:900px){.kai-workstation-video{object-position:center center}}
+@media(prefers-reduced-motion:reduce){.kai-workstation-video{animation:none!important}}

@@ -1,0 +1,74 @@
+/* ChatGPT-inspired HAxBRO conversation shell. Keeps HAxBRO features and brand. */
+:root{--hb-bg:#fff;--hb-sidebar:#f9f9f9;--hb-text:#202123;--hb-muted:#6b7280;--hb-line:#e5e7eb;--hb-hover:#ececec;--hb-accent:#2563eb}
+body.hax-modern{background:var(--hb-bg)!important;color:var(--hb-text)!important;overflow:hidden!important}
+body.hax-modern .ambient{display:none!important}
+body.hax-modern .topbar{display:none!important}
+body.hax-modern .app-shell{display:grid!important;grid-template-columns:260px minmax(0,1fr)!important;gap:0!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:0!important;background:#fff!important}
+body.hax-modern .sidebar{display:flex!important;flex-direction:column!important;gap:14px!important;width:260px!important;min-width:260px!important;max-width:260px!important;height:100dvh!important;padding:14px 12px 12px!important;box-sizing:border-box!important;background:var(--hb-sidebar)!important;border:0!important;border-right:1px solid #eee!important;border-radius:0!important;box-shadow:none!important;overflow-y:auto!important}
+body.hax-modern .side-title{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;padding:5px 8px 14px!important;border-bottom:0!important}
+body.hax-modern .side-title b{font:700 16px/1.2 Inter,system-ui,sans-serif!important;letter-spacing:-.4px!important;color:#202123!important}
+body.hax-modern .side-title span{display:none!important}
+body.hax-modern .side-title:before{content:"H";display:grid;place-items:center;width:27px;height:27px;border-radius:8px;background:#111827;color:#fff;font:800 14px/1 Inter,system-ui,sans-serif}
+body.hax-modern .mode-card{padding:10px!important;border:1px solid #e5e7eb!important;border-radius:12px!important;background:#fff!important;box-shadow:none!important}
+body.hax-modern .mode-name{font-size:11px!important;color:#202123!important}
+body.hax-modern .mode-desc{font-size:10px!important;color:#777!important}
+body.hax-modern .mode-buttons{gap:4px!important;margin-top:8px!important}
+body.hax-modern .mode-btn{padding:7px 3px!important;border:1px solid #e5e7eb!important;border-radius:8px!important;background:#fff!important;color:#555!important;font-size:8px!important;box-shadow:none!important}
+body.hax-modern .mode-btn.active{background:#ececec!important;border-color:#d5d5d5!important;color:#111!important}
+body.hax-modern .ai-tools{display:grid!important;gap:2px!important}
+body.hax-modern .ai-tools .section-label{padding:8px 10px 4px!important;color:#888!important;font-size:9px!important;letter-spacing:.1em!important}
+body.hax-modern .maker-link{display:flex!important;align-items:center!important;gap:9px!important;min-height:38px!important;padding:8px 10px!important;border:0!important;border-radius:9px!important;background:transparent!important;color:#333!important;font:500 12px/1.3 Inter,system-ui,sans-serif!important;box-shadow:none!important}
+body.hax-modern .maker-link:hover,body.hax-modern .history-item:hover,body.hax-modern .history-item.selected{background:#ececec!important;color:#111!important;border-color:transparent!important}
+body.hax-modern .maker-link small{margin-left:auto!important;color:#999!important;font-size:8px!important}
+body.hax-modern .history{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:100px!important}
+body.hax-modern .history-head{display:flex!important;align-items:center!important;justify-content:space-between!important;padding:8px 10px 6px!important}
+body.hax-modern .history-head .section-label{color:#888!important;font-size:9px!important;letter-spacing:.1em!important}
+body.hax-modern .history-head button{width:28px!important;height:28px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:#555!important}
+body.hax-modern .history-head button:hover{background:#ececec!important}
+body.hax-modern .history-list{max-height:none!important;overflow:auto!important}
+body.hax-modern .history-item{padding:9px 10px!important;border-radius:8px!important;color:#444!important;font-size:11px!important}
+body.hax-modern .customer-profile{margin-top:auto!important;background:transparent!important;border:0!important;border-top:1px solid #e5e5e5!important;border-radius:0!important;padding:12px 6px 2px!important;box-shadow:none!important}
+body.hax-modern .customer-profile-copy b{color:#333!important}
+body.hax-modern .credit{display:none!important}
+body.hax-modern .chat-panel{position:relative!important;display:flex!important;flex-direction:column!important;min-width:0!important;width:100%!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;border-radius:0!important;background:#fff!important;box-shadow:none!important}
+body.hax-modern .chat-head{display:none!important}
+body.hax-modern .messages{flex:1 1 auto!important;min-height:0!important;width:100%!important;max-width:900px!important;box-sizing:border-box!important;margin:0 auto!important;padding:28px 28px 160px!important;overflow-y:auto!important;background:#fff!important}
+body.hax-modern .hero-welcome{display:none!important}
+body.hax-modern .messages:has(.hero-welcome:only-child){display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;padding-bottom:150px!important}
+body.hax-modern .messages:has(.hero-welcome:only-child):before{content:"What can I help with?";display:block;margin:0 0 28px!important;color:#202123!important;font:600 clamp(25px,3vw,32px)/1.2 Inter,system-ui,sans-serif!important;letter-spacing:-.8px!important;text-align:center!important}
+body.hax-modern .message-body{max-width:min(720px,calc(100% - 54px))!important}
+body.hax-modern .bubble,body.hax-modern .user-msg .bubble{padding:12px 16px!important;border:0!important;border-radius:18px!important;background:#f4f4f4!important;color:#202123!important;box-shadow:none!important;font-size:14px!important;line-height:1.7!important}
+body.hax-modern .user-msg .bubble{background:#f4f4f4!important}
+body.hax-modern .message-avatar{width:30px!important;height:30px!important;border-radius:50%!important;background:#111827!important}
+body.hax-modern #haxCommandShortcuts{display:none!important}
+body.hax-modern #chatForm.composer{position:relative!important;inset:auto!important;display:flex!important;align-items:center!important;gap:8px!important;width:min(760px,calc(100% - 48px))!important;max-width:760px!important;min-width:0!important;margin:0 auto 8px!important;padding:10px 12px!important;box-sizing:border-box!important;border:1px solid #d9d9d9!important;border-radius:26px!important;background:#fff!important;box-shadow:0 2px 10px rgba(0,0,0,.06)!important;overflow:visible!important}
+body.hax-modern #chatForm .input-wrap{display:flex!important;align-items:center!important;flex:1 1 auto!important;gap:8px!important;min-width:0!important;min-height:38px!important;padding:0 6px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+body.hax-modern #chatForm .input-wrap>.terminal{display:none!important}
+body.hax-modern #chatForm .model-picker{flex:0 0 auto!important;max-width:112px!important}
+body.hax-modern #chatForm .model-picker-btn{padding:6px 7px!important;border:0!important;border-radius:8px!important;background:#f5f5f5!important;color:#444!important;font-size:9px!important;font-weight:650!important}
+body.hax-modern #promptInput{flex:1 1 auto!important;min-width:0!important;width:100%!important;min-height:38px!important;max-height:150px!important;padding:8px 2px!important;border:0!important;outline:0!important;resize:none!important;background:transparent!important;color:#202123!important;font:14px/1.45 Inter,system-ui,sans-serif!important;box-shadow:none!important}
+body.hax-modern #promptInput::placeholder{color:#888!important}
+body.hax-modern #promptClearBtn{color:#777!important;background:transparent!important}
+body.hax-modern #chatForm #attachBtn,body.hax-modern #chatForm #micBtn{display:grid!important;place-items:center!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;border:0!important;border-radius:50%!important;background:#f3f3f3!important;color:#444!important;box-shadow:none!important}
+body.hax-modern #chatForm #sendBtn{display:grid!important;place-items:center!important;width:36px!important;height:36px!important;min-width:36px!important;border:0!important;border-radius:50%!important;background:#111827!important;color:#fff!important;box-shadow:none!important}
+body.hax-modern #chatForm #sendBtn span{color:#fff!important}
+body.hax-modern .hint{margin:0 auto 10px!important;color:#888!important;font-size:10px!important;letter-spacing:0!important;text-align:center!important}
+body.hax-modern #kai51BootStamp{display:none!important}
+body.hax-modern #kai51RuntimeHook{position:fixed!important;top:10px!important;right:14px!important;left:auto!important;bottom:auto!important;transform:none!important;z-index:1250!important;padding:5px 8px!important;border:1px solid #e5e5e5!important;border-radius:999px!important;background:#fff!important;color:#888!important;box-shadow:none!important;font-size:8px!important}
+body.hax-modern #kai51RuntimeHook.is-ready{display:none!important}
+body.hax-modern .mobile-menu{display:none!important}
+@media(max-width:900px){body.hax-modern .app-shell{grid-template-columns:minmax(0,1fr)!important}body.hax-modern .sidebar{display:none!important}body.hax-modern .mobile-menu{display:flex!important;position:fixed!important;top:12px!important;left:12px!important;z-index:1300!important;width:38px!important;height:38px!important;align-items:center!important;justify-content:center!important;border:1px solid #e5e5e5!important;border-radius:10px!important;background:#fff!important;color:#333!important;box-shadow:none!important}}
+@media(max-width:700px){body.hax-modern .app-shell,body.hax-modern .chat-panel{height:100dvh!important;max-height:100dvh!important}body.hax-modern .messages{padding:18px 14px 150px!important}body.hax-modern .messages:has(.hero-welcome:only-child){padding-bottom:145px!important}body.hax-modern .messages:has(.hero-welcome:only-child):before{font-size:25px!important;margin-bottom:22px!important}body.hax-modern #chatForm.composer{position:fixed!important;left:12px!important;right:12px!important;bottom:calc(8px + env(safe-area-inset-bottom) + var(--hb-keyboard-inset,0px))!important;width:auto!important;max-width:none!important;margin:0!important;padding:8px 10px!important;gap:6px!important;border-radius:24px!important}body.hax-modern #chatForm .input-wrap{min-height:38px!important;padding:0 4px!important}body.hax-modern #chatForm .model-picker{max-width:88px!important}body.hax-modern #promptInput{font-size:16px!important;min-height:38px!important}body.hax-modern #chatForm #attachBtn,body.hax-modern #chatForm #micBtn{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important}body.hax-modern #chatForm #sendBtn{width:36px!important;height:36px!important;min-width:36px!important}body.hax-modern .hint{display:block!important;margin-bottom:4px!important;font-size:9px!important}body.hax-modern #kai51RuntimeHook{top:10px!important;right:10px!important;left:auto!important;transform:none!important}}
+/* Composer alignment fix: centered, full-width writing area like ChatGPT. */
+body.hax-modern .chat-panel{position:relative!important}
+body.hax-modern #chatForm.composer{position:absolute!important;left:50%!important;right:auto!important;bottom:30px!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;width:min(768px,calc(100% - 48px))!important;max-width:768px!important;min-height:60px!important;margin:0!important;padding:10px 14px!important;box-sizing:border-box!important;z-index:1200!important}
+body.hax-modern #chatForm .input-wrap{display:flex!important;flex:1 1 0%!important;align-items:center!important;width:100%!important;min-width:0!important;max-width:none!important;box-sizing:border-box!important}
+body.hax-modern #promptInput{display:block!important;flex:1 1 0%!important;width:100%!important;min-width:0!important;max-width:none!important;text-align:left!important;box-sizing:border-box!important}
+body.hax-modern .hint{position:absolute!important;left:50%!important;bottom:8px!important;transform:translateX(-50%)!important;width:min(768px,calc(100% - 48px))!important;margin:0!important;z-index:1199!important}
+body.hax-modern .messages{padding-bottom:180px!important}
+@media(max-width:900px){
+ body.hax-modern #chatForm.composer{left:50%!important;right:auto!important;bottom:calc(12px + env(safe-area-inset-bottom) + var(--hb-keyboard-inset,0px))!important;width:calc(100vw - 28px)!important;max-width:768px!important;transform:translateX(-50%)!important}
+ body.hax-modern .hint{left:50%!important;bottom:calc(4px + env(safe-area-inset-bottom) + var(--hb-keyboard-inset,0px))!important;width:calc(100vw - 32px)!important;transform:translateX(-50%)!important}
+ body.hax-modern .messages{padding-bottom:175px!important}
+}
+@media(prefers-reduced-motion:reduce){body.hax-modern *{animation:none!important;transition:none!important}}

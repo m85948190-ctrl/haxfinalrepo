@@ -1,0 +1,62 @@
+/* KAI companion avatar — sidebar-only visual layer */
+.kai-sidebar-avatar-mount{width:100%;margin:12px 0 14px;flex:0 0 auto}
+.kai-companion{position:relative;overflow:hidden;width:100%;min-height:194px;padding:11px 11px 10px;border:1px solid rgba(46,161,210,.22);border-radius:17px;background:radial-gradient(ellipse at 28% 28%,rgba(72,191,255,.17),transparent 56%),linear-gradient(145deg,rgba(239,249,255,.96),rgba(224,241,250,.78));box-shadow:0 8px 24px rgba(34,112,155,.09),inset 0 1px 0 rgba(255,255,255,.88);color:#18364b}
+.kai-companion:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.24;background-image:linear-gradient(rgba(35,130,180,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(35,130,180,.055) 1px,transparent 1px);background-size:18px 18px;mask-image:linear-gradient(120deg,#000,transparent 78%)}
+.kai-companion-head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:2px}
+.kai-companion-brand{font:850 10px/1.2 ui-sans-serif,system-ui,sans-serif;letter-spacing:.16em;color:#176b9a}
+.kai-companion-online{display:flex;align-items:center;gap:5px;font:750 8px/1 ui-monospace,monospace;letter-spacing:.08em;color:#37816f}
+.kai-companion-online i{width:6px;height:6px;border-radius:50%;background:#2ac58b;box-shadow:0 0 9px #2ac58b}
+.kai-avatar-stage{position:relative;z-index:1;height:126px;display:flex;align-items:flex-end;justify-content:center;gap:4px;overflow:hidden;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.44),rgba(125,196,225,.12))}
+.kai-avatar-halo{position:absolute;width:104px;height:104px;left:50%;top:9px;transform:translateX(-50%);border:1px solid rgba(54,170,220,.25);border-radius:50%;box-shadow:0 0 0 9px rgba(69,178,221,.045),0 0 32px rgba(39,158,215,.12)}
+.kai-avatar-halo:before,.kai-avatar-halo:after{content:"";position:absolute;inset:8px;border:1px dashed rgba(42,153,203,.22);border-radius:50%;animation:kaiOrbit 15s linear infinite}
+.kai-avatar-halo:after{inset:-7px;border-style:solid;border-color:transparent rgba(44,167,215,.28) transparent transparent;animation-duration:9s}
+.kai-robot{position:relative;z-index:2;width:104px;height:118px;flex:0 0 104px}
+.kai-robot-antenna{position:absolute;top:0;left:49px;width:6px;height:13px;border-radius:5px;background:linear-gradient(#8cecff,#2a8fca)}
+.kai-robot-antenna:before{content:"";position:absolute;left:-3px;top:-4px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#52d7ff 45%,#1683bf);box-shadow:0 0 12px rgba(40,193,255,.75)}
+.kai-robot-head{position:absolute;top:12px;left:19px;width:67px;height:54px;border:2px solid #7cc9e8;border-radius:19px 19px 17px 17px;background:linear-gradient(145deg,#f9feff 0%,#c9eaf7 48%,#91cce4 100%);box-shadow:inset 0 3px 5px #fff,0 5px 12px rgba(26,104,148,.2)}
+.kai-robot-face{position:absolute;inset:8px 8px 9px;border-radius:12px;background:linear-gradient(145deg,#123e5c,#0a2942);box-shadow:inset 0 0 12px rgba(56,202,255,.23);display:flex;align-items:center;justify-content:center;gap:13px}
+.kai-robot-eye{width:8px;height:10px;border-radius:50%;background:#70e7ff;box-shadow:0 0 8px #39caff;animation:kaiBlink 5.2s infinite}
+.kai-robot-mouth{position:absolute;bottom:6px;left:50%;width:12px;height:3px;transform:translateX(-50%);border-radius:8px;background:#65dcff;box-shadow:0 0 5px #36caff}
+.kai-robot-body{position:absolute;top:67px;left:31px;width:43px;height:39px;border:2px solid #85cce7;border-radius:13px 13px 9px 9px;background:linear-gradient(145deg,#f5fdff,#9ed8ec);box-shadow:inset 0 3px 5px white,0 4px 8px rgba(20,89,130,.16)}
+.kai-robot-core{position:absolute;left:50%;top:10px;width:12px;height:12px;transform:translateX(-50%);border:2px solid #65c8eb;border-radius:50%;background:#e8fcff;box-shadow:0 0 11px #4bcaff}
+.kai-robot-arm{position:absolute;top:72px;width:12px;height:31px;border:2px solid #82c7e3;border-radius:9px;background:linear-gradient(90deg,#dff7ff,#7bbbd8);transform-origin:50% 7px}
+.kai-robot-arm.left{left:18px;transform:rotate(24deg)}
+.kai-robot-arm.right{right:18px;transform:rotate(-24deg)}
+.kai-robot-hand{position:absolute;bottom:-5px;left:-3px;width:15px;height:13px;border:2px solid #77bddc;border-radius:7px;background:#dff8ff}
+.kai-avatar-screen{position:relative;z-index:2;align-self:center;margin:12px 3px 0 0;width:57px;height:51px;flex:0 0 57px;border:3px solid #8bcde4;border-bottom-width:5px;border-radius:7px;background:linear-gradient(160deg,#123b58,#092a43);box-shadow:0 5px 10px rgba(20,84,120,.18);overflow:hidden}
+.kai-avatar-screen:after{content:"";position:absolute;left:20px;bottom:-11px;width:12px;height:11px;background:#8bcde4;box-shadow:0 10px 0 5px #8bcde4}
+.kai-screen-content{position:absolute;inset:6px 5px;display:flex;flex-direction:column;gap:4px}
+.kai-screen-line{height:3px;border-radius:3px;background:#5bdcff;opacity:.8;animation:kaiScreenPulse 1.5s ease-in-out infinite}
+.kai-screen-line:nth-child(2){width:72%;animation-delay:.2s}.kai-screen-line:nth-child(3){width:84%;animation-delay:.4s}.kai-screen-line:nth-child(4){width:48%;animation-delay:.6s}
+.kai-companion-status{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.kai-companion-action{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 9px/1.3 ui-sans-serif,system-ui,sans-serif;letter-spacing:.07em;color:#176b9a}
+.kai-companion-detail{font:650 8px/1.3 ui-monospace,monospace;color:#65879a;white-space:nowrap}
+.kai-companion[data-state="searching"] .kai-robot-arm.left{animation:kaiType 0.34s ease-in-out infinite alternate}
+.kai-companion[data-state="searching"] .kai-robot-arm.right{animation:kaiType 0.3s ease-in-out infinite alternate-reverse}
+.kai-companion[data-state="reading"] .kai-robot-head{transform:rotate(-5deg)}
+.kai-companion[data-state="reading"] .kai-robot-eye{height:5px;transform:translateY(2px)}
+.kai-companion[data-state="thinking"] .kai-robot-arm.right{transform:rotate(-68deg);top:63px}
+.kai-companion[data-state="thinking"] .kai-robot-hand{bottom:2px}
+.kai-companion[data-state="coding"] .kai-robot-arm{animation:kaiType .26s ease-in-out infinite alternate}
+.kai-companion[data-state="building"] .kai-robot-arm.left{animation:kaiBuild .8s ease-in-out infinite}
+.kai-companion[data-state="building"] .kai-robot-arm.right{animation:kaiBuild .8s ease-in-out infinite reverse}
+.kai-companion[data-state="completed"] .kai-robot-arm.left{animation:kaiCelebrate .65s ease-in-out 3}
+.kai-companion[data-state="completed"] .kai-robot-arm.right{animation:kaiCelebrate .65s ease-in-out 3 reverse}
+.kai-companion[data-state="error"] .kai-robot-mouth{width:10px;height:5px;border-radius:10px 10px 2px 2px;transform:translateX(-50%) rotate(180deg)}
+.kai-companion[data-state="error"] .kai-robot-head{filter:saturate(.7)}
+@keyframes kaiBlink{0%,45%,49%,100%{transform:scaleY(1)}47%{transform:scaleY(.12)}}
+@keyframes kaiOrbit{to{transform:rotate(360deg)}}
+@keyframes kaiScreenPulse{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes kaiType{from{transform:rotate(-38deg)}to{transform:rotate(30deg)}}
+@keyframes kaiBuild{0%,100%{transform:rotate(20deg)}50%{transform:rotate(-35deg)}}
+@keyframes kaiCelebrate{0%,100%{transform:rotate(18deg)}50%{transform:rotate(-105deg)}}
+@media(prefers-reduced-motion:reduce){.kai-avatar-halo:before,.kai-avatar-halo:after,.kai-robot-eye,.kai-screen-line,.kai-robot-arm{animation:none!important}}
+@media(max-width:900px){.kai-sidebar-avatar-mobile-mount{margin:2px 0 12px}.kai-companion{min-height:180px}.kai-avatar-stage{height:116px}}
+body.dark .kai-companion,.dark .kai-companion,[data-theme="dark"] .kai-companion{background:radial-gradient(ellipse at 28% 28%,rgba(36,167,221,.17),transparent 56%),linear-gradient(145deg,#142b3b,#0d1d2a);border-color:rgba(70,177,221,.25);color:#d9f3ff;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+body.dark .kai-companion-brand,.dark .kai-companion-brand,[data-theme="dark"] .kai-companion-brand{color:#7edfff}
+body.dark .kai-companion-action,.dark .kai-companion-action,[data-theme="dark"] .kai-companion-action{color:#8fe4ff}
+body.dark .kai-companion-detail,.dark .kai-companion-detail,[data-theme="dark"] .kai-companion-detail{color:#8aaebe}
+.history-head #clearBtn{min-width:66px!important;width:auto!important;padding:7px 10px!important;border-radius:9px!important;font-size:10px!important;font-weight:800!important;letter-spacing:.03em!important}
+.kai-mobile-new-chat{flex:0 0 auto!important;width:auto!important;min-height:30px!important;margin-left:auto!important;padding:6px 9px!important;border-radius:9px!important;font-size:10px!important;white-space:nowrap!important}
+.mobile-drawer-content>.history{order:0!important}
+@media(max-width:900px){.mobile-drawer-content>.history{width:100%}.mobile-drawer-content>.history .history-list{max-height:25vh;overflow-y:auto}}

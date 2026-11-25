@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071426">
+<meta name="robots" content="noindex,nofollow">
+<title>Sign in · HAxBRO AI</title>
+<style>
+:root{color-scheme:dark;--bg:#06101d;--panel:#0b1b2d;--line:#1b3b56;--text:#eef8ff;--muted:#91aabd;--cyan:#27d8f2;--blue:#1687ff}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% 0,#0b4780 0,transparent 48%),linear-gradient(145deg,#030914,#071a2b 65%,#020811);color:var(--text)}
+body{min-height:100svh;min-height:100dvh;display:grid;place-items:center;padding:max(18px,env(safe-area-inset-top)) 16px max(18px,env(safe-area-inset-bottom))}
+main{width:min(100%,430px);padding:clamp(22px,6vw,38px);border:1px solid #27b9e344;border-radius:24px;background:linear-gradient(150deg,#0b2034f2,#071321f5);box-shadow:0 24px 90px #0008,inset 0 1px #ffffff10}
+.brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px;font-weight:900;letter-spacing:.04em}.brand img{width:38px;height:38px}.brand span{color:var(--cyan)}.eyebrow{text-align:center;color:var(--cyan);font:800 10px/1.4 ui-monospace,monospace;letter-spacing:.2em}h1{text-align:center;font-size:clamp(26px,7vw,34px);letter-spacing:-.04em;margin:10px 0}.sub{text-align:center;color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 24px}
+button,a,input{font:inherit}button,a.action{width:100%;min-height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:750;text-decoration:none;cursor:pointer}
+.guest{border:1px solid #d8d8d8;background:#fff;color:#111;margin-bottom:12px}.guest:hover{background:#f2f2f2}.google{border:1px solid #6e8ba5;background:#f7fbff;color:#162536}.google svg{width:19px;height:19px;flex:none}
+.separator{display:flex;align-items:center;gap:12px;margin:18px 0;color:#7993a8;font-size:11px}.separator:before,.separator:after{content:"";height:1px;flex:1;background:#244058}
+label{display:block;color:#a9c1d2;font-size:12px;font-weight:700;margin:12px 0 7px}input{width:100%;min-height:49px;border:1px solid #294760;border-radius:12px;padding:0 14px;background:#061322;color:var(--text);font-size:16px;outline:none}input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #27d8f222}
+.primary{margin-top:12px;border:0;background:linear-gradient(110deg,#087fff,#12c9e8);color:white;box-shadow:0 8px 24px #087fff35}.secondary{margin-top:9px;border:1px solid #294760;background:#0b1b2d;color:#c8dbe8}.msg{min-height:22px;margin:14px 0 0;text-align:center;color:#a9c1d2;font-size:13px;line-height:1.5}.msg.error{color:#ff9caa}.foot{text-align:center;color:#6f8ca2;font-size:11px;margin:20px 0 0}.foot a{color:#8ceeff;text-decoration:none}.hidden{display:none!important}[hidden]{display:none!important}
+@media(max-width:380px){main{padding:22px 18px;border-radius:18px}.brand{margin-bottom:18px}.sub{margin-bottom:18px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><img src="/logo-symbol.svg" alt=""><div>HAx<span>BRO</span> AI</div></div>
+  <div class="eyebrow">YOUR PERSONAL AI WORKSPACE</div>
+  <h1 id="title">Welcome back.</h1>
+  <p class="sub" id="subtitle">Visit the workspace as a guest, or sign in to your HAxBRO account.</p>
+  <a class="guest action" id="guestBtn" href="/app/?guest=1" aria-label="Visit HAxBRO as a guest">Visit as a guest <span aria-hidden="true">→</span></a>
+  <a class="google action" id="googleBtn" href="/api/auth/google/start" aria-label="Continue with Google">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+    Continue with Google
+  </a>
+  <div class="separator">OR USE EMAIL</div>
+  <form id="form" novalidate>
+    <div id="emailRow"><label for="email">EMAIL ADDRESS</label><input id="email" type="email" autocomplete="username webauthn" autocapitalize="off" placeholder="you@example.com" required></div>
+    <div id="codeRow" hidden><label for="code">6-DIGIT SIGN-IN CODE</label><input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Enter the code"></div>
+    <button class="primary" id="submit" type="submit">Continue with email</button>
+    <button class="secondary" id="back" type="button" hidden>Use a different email</button>
+  </form>
+  <section id="passkeyOffer" hidden>
+    <p class="sub">Add a passkey to sign in next time with your fingerprint, face, or device screen lock.</p>
+    <button class="primary" id="addPasskey" type="button">Add a passkey</button>
+    <button class="secondary" id="skipPasskey" type="button">Not now</button>
+  </section>
+  <p class="msg" id="message" role="status" aria-live="polite"></p>
+  <p class="foot">By continuing, you agree to use HAxBRO responsibly. <a href="/">Back to HAxBRO</a></p>
+</main>
+<script>
+(function(){
+ const A=window.hatchable&&window.hatchable.auth;
+ const $=id=>document.getElementById(id);
+ const form=$('form'),email=$('email'),code=$('code'),emailRow=$('emailRow'),codeRow=$('codeRow'),submit=$('submit'),back=$('back'),msg=$('message'),google=$('googleBtn'),offer=$('passkeyOffer');
+ let step='email',hasPasskey=false;
+ function safeNext(){const raw=new URLSearchParams(location.search).get('next')||'/app/';if(!raw.startsWith('/')||raw.startsWith('//')||raw.includes('\\')||/[\u0000-\u001f\u007f]/.test(raw))return '/app/';return raw}
+ function done(){location.replace(safeNext())}
+ function say(t,error){msg.textContent=t||'';msg.className='msg'+(error?' error':'')}
+ if(!A){say('Sign-in is not available yet. Refresh this page after setup is complete.',true);submit.disabled=true;return}
+ google.href='/api/auth/google/start?next='+encodeURIComponent(safeNext());
+ window.hatchable.auth.getSession().then(s=>{if(s&&s.user)done()}).catch(()=>{});
+ if(window.hatchable.auth.attachPasskeyAutofill){try{A.attachPasskeyAutofill(email).then(r=>{if(r&&r.user)done()}).catch(()=>{})}catch(e){}}
+ $('back').addEventListener('click',()=>{step='email';emailRow.hidden=false;codeRow.hidden=true;back.hidden=true;submit.textContent='Continue with email';say('');email.focus()});
+ form.addEventListener('submit',async e=>{
+  e.preventDefault();submit.disabled=true;say('');
+  try{
+   if(step==='email'){
+    const value=email.value.trim();if(!value)throw new Error('Enter your email address.');
+    const result=await window.hatchable.auth.startLogin({email:value});hasPasskey=!!result.has_passkey;
+    if(hasPasskey&&window.hatchable.auth.supportsPasskeys&&window.hatchable.auth.supportsPasskeys()){try{const d=await window.hatchable.auth.signInWithPasskey({email:value});if(d&&d.user){done();return}}catch(err){}}
+    step='code';emailRow.hidden=true;codeRow.hidden=false;back.hidden=false;submit.textContent='Verify and sign in';$('subtitle').textContent='Enter the one-time code sent to '+value+'.';say('Code sent. Check your inbox.');code.focus();
+   }else{
+    const result=await window.hatchable.auth.verifyCode({email:email.value.trim(),code:code.value.trim()});if(!result||!result.user)throw new Error('That code did not work. Try again.');
+    if(!hasPasskey&&A.supportsPasskeys&&A.supportsPasskeys()&&localStorage.getItem('haxbro_passkey_offer_declined')!=='1'){form.hidden=true;google.hidden=true;offer.hidden=false;$('title').textContent="You're signed in";$('subtitle').textContent='One more step: secure this device with a passkey.';say('')}else done();
+   }
+  }catch(err){say(err&&err.message||'Sign-in failed. Please try again.',true)}
+  finally{submit.disabled=false}
+ });
+ $('addPasskey').addEventListener('click',async()=>{try{await window.hatchable.auth.registerPasskey();}catch(e){}done()});
+ $('skipPasskey').addEventListener('click',()=>{try{localStorage.setItem('haxbro_passkey_offer_declined','1')}catch(e){}done()});
+ email.focus();
+})();
+</script>
+</body></html>

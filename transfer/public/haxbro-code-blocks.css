@@ -1,0 +1,11 @@
+/* HAxBRO chat code blocks: dark editor surface with high-contrast readable source. */
+.hax-code-wrap{display:block;max-width:100%;margin:14px 0 18px;overflow:hidden;border:1px solid #343434;border-radius:12px;background:#050505;color:#fff!important;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.hax-code-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:34px;padding:0 12px;background:#111;border-bottom:1px solid #333;color:#e7e7e7!important;font:700 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase}
+.hax-code-bar button{border:1px solid #555;border-radius:6px;padding:5px 9px;background:#1c1c1c;color:#fff!important;font:700 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;cursor:pointer}
+.hax-code-bar button:hover{background:#303030;border-color:#888}
+pre.hax-code{display:block;max-width:100%;max-height:620px;margin:0;padding:16px;overflow:auto;background:#050505!important;color:#fff!important;text-align:left;white-space:pre;tab-size:2;-moz-tab-size:2;font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre.hax-code code,pre.hax-code code *{background:transparent!important;color:#fff!important;text-shadow:none!important;font:inherit!important}
+.hax-html-preview{display:block;width:100%;min-height:280px;border:0;border-top:1px solid #333;background:#fff}
+.light-ui .hax-code-wrap,.cyber-ui .hax-code-wrap,.overdrive-ui .hax-code-wrap{background:#050505!important;color:#fff!important}
+.light-ui pre.hax-code,.cyber-ui pre.hax-code,.overdrive-ui pre.hax-code{background:#050505!important;color:#fff!important}
+@media(max-width:700px){pre.hax-code{max-height:480px;padding:12px;font-size:11px}.hax-code-bar{min-height:38px}}

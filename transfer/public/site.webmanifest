@@ -1,0 +1,16 @@
+{
+  "name":"HAxBRO",
+  "short_name":"HAxBRO",
+  "start_url":"/app/",
+  "scope":"/",
+  "display":"standalone",
+  "display_override":["standalone","minimal-ui","browser"],
+  "orientation":"any",
+  "background_color":"#f7fcff",
+  "theme_color":"#00d9ff",
+  "categories":["productivity","developer","utilities"],
+  "description":"HAxBRO personal AI workspace for coding, app building, research, and defensive cybersecurity.",
+  "icons":[
+    {"src":"/icon-192.svg?v=753","sizes":"400x400","type":"image/svg+xml","purpose":"any"}
+  ]
+}

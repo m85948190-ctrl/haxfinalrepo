@@ -1,0 +1,45 @@
+<section id="artGenerationPanel" class="art9-pro" hidden aria-label="HAxBRO Art Maker">
+  <div class="art9-shell">
+    <aside class="art9-rail">
+      <div class="art9-brand"><img src="/logo-symbol.svg" alt="HAxBRO"><div><b>HAxBRO</b><small>ART MAKER</small></div></div>
+      <button id="art9New" class="art9-new">＋ New project</button>
+      <nav class="art9-nav">
+        <button class="active" data-tab="image">✦ <span>Image</span></button>
+        <button data-tab="video">▶ <span>Video</span></button>
+        <button data-tab="scene">◇ <span>3D Scene</span></button>
+        <button data-tab="frames">▦ <span>Frame Lab</span></button>
+      </nav>
+      <div class="art9-label">KAI PIPELINE</div>
+      <div class="art9-workers"><div class="art9-worker" data-worker="4567"><b>Kai 4-5-6-7</b><span>Semantic Director</span></div><div class="art9-worker" data-worker="23"><b>Kai 23</b><span>Image QA</span></div><div class="art9-worker" data-worker="34"><b>Kai 34</b><span>Video QA</span></div><div class="art9-worker" data-worker="45"><b>Kai 45</b><span>Keyframe Builder</span></div><div class="art9-worker" data-worker="67"><b>Kai 67</b><span>Scene Builder</span></div><div class="art9-worker" data-worker="78"><b>Kai 78</b><span>Motion / Camera</span></div><div class="art9-worker" data-worker="89"><b>Kai 89</b><span>Render Assembly</span></div><div class="art9-worker" data-worker="098"><b>Kai 098</b><span>Precision QA</span></div></div>
+      <div class="art9-rail-bottom"><span class="art9-engine-dot"></span><span>Native local engine</span><button id="art9CloseRail">Close</button></div>
+    </aside>
+    <main class="art9-main">
+      <header class="art9-header">
+        <div><div class="art9-kicker">HAXBRO AI · CREATOR STUDIO</div><h1>Art Maker</h1></div>
+        <div class="art9-head-actions"><span id="art9Status" class="art9-status">READY</span><button id="art9X" class="art9-x" aria-label="Close">×</button></div>
+      </header>
+      <div class="art9-workbar">
+        <div class="art9-mode-tabs"><button class="active" data-tab="image">IMAGE</button><button data-tab="video">VIDEO</button><button data-tab="scene">3D SCENE</button><button data-tab="frames">FRAME LAB</button></div>
+        <div class="art9-format"><label>Canvas</label><select id="art9Format"><option value="9:16">9:16 · Shorts / Reels</option><option value="16:9">16:9 · YouTube</option><option value="1:1">1:1 · Square</option><option value="custom">Custom image</option></select><input id="art9W" type="number" min="64" max="4096" value="1080" aria-label="Canvas width"><span>×</span><input id="art9H" type="number" min="64" max="4096" value="1920" aria-label="Canvas height"></div>
+      </div>
+      <section class="art9-stage-area">
+        <div class="art9-stage" id="art9Stage">
+          <div id="art9Device" class="art9-device portrait"><div class="art9-device-bar"><span id="art9DeviceLabel">9:16 · 1080×1920</span><div><button id="art9Fit">Fit</button><button id="art9ZoomOut">−</button><span id="art9Zoom">100%</span><button id="art9ZoomIn">+</button></div></div><div id="art9RenderSlot" class="art9-render-slot"></div></div>
+          <div id="art9Empty" class="art9-empty"><div>✦</div><h2 id="art9Title">Create with Kai</h2><p id="art9Sub">Describe an image, scene, character or video. The visible result stays in the Art Maker.</p></div>
+        </div>
+        <aside class="art9-inspector">
+          <div class="art9-ins-head">INSPECTOR <span id="art9InspectorState">READY</span></div>
+          <section><h3>Scene</h3><label>Camera <select id="art9Camera"><option>Front</option><option>3/4</option><option>Side</option><option>Orbit</option></select></label><label>Lighting <input id="art9Light" type="range" min="0" max="100" value="70"></label><label>Depth <input id="art9Depth" type="range" min="0" max="100" value="55"></label><label>Material <select id="art9Material"><option>Studio</option><option>Matte</option><option>Metal</option><option>Gloss</option></select></label></section>
+          <section><h3>Motion</h3><label>Animation <select id="art9Anim"><option>Idle</option><option>Slow turn</option><option>Camera push</option><option>Float</option></select></label><label>Duration <select id="art9Duration"><option value="5">5s</option><option value="15">15s</option><option value="30">30s</option><option value="45">45s</option><option value="60">60s</option></select></label></section>
+          <section><h3>Audio</h3><div class="art9-audio-row"><button id="art9VoiceBtn">＋ Voiceover</button><button id="art9MusicBtn">＋ Music</button></div><label>Volume <input id="art9Volume" type="range" min="0" max="100" value="100"></label><label>Placement <input id="art9AudioStart" type="number" min="0" step="0.1" value="0"></label><input id="art9Audio" type="file" accept="audio/*" hidden></section>
+        </aside>
+      </section>
+      <section class="art9-timeline">
+        <div class="art9-timeline-head"><div><b>Timeline</b><span id="art9Time">00:00 / 00:05</span></div><div class="art9-tl-actions"><button id="art9Play">▶</button><button id="art9Split">Split</button><button id="art9Trim">Trim to playhead</button><button id="art9AddFrame">＋ Keyframe</button><button id="art9RemoveFrame">− Keyframe</button><button id="art9FramePrev">← Frame</button><button id="art9FrameNext">Frame →</button><button id="art9Render">Render video</button><button id="art9Download">Download</button></div></div>
+        <div class="art9-ruler" id="art9Ruler"></div>
+        <div class="art9-tracks" id="art9Tracks"><div class="art9-track"><span class="art9-track-name">VIDEO</span><div id="art9ClipTrack" class="art9-track-lane"></div></div><div class="art9-track"><span class="art9-track-name">KEYFRAMES</span><div id="art9KeyTrack" class="art9-track-lane"></div></div><div class="art9-track"><span class="art9-track-name">AUDIO</span><div id="art9AudioTrack" class="art9-track-lane"><span class="art9-audio-empty">Add voice or music</span></div></div><div id="art9Playhead" class="art9-playhead"></div></div>
+      </section>
+      <section class="art9-composer"><div class="art9-tools"><button id="art9Reference">＋ Reference</button><input id="art9ReferenceInput" type="file" accept="image/*,video/*" hidden><button id="art9Plan">Plan with Kai 9.0</button><button id="art9Regenerate">Regenerate</button><button id="art9Edit">Edit / Refine</button><button id="art9Crop">Crop</button><button id="art9Delete">Delete selection</button></div><div class="art9-prompt"><textarea id="art9Prompt" rows="1" placeholder="Describe exactly what you want to create…"></textarea><button id="art9Generate">CREATE <span>↗</span></button></div><div id="art9Message" class="art9-message">Ready. Local procedural renderer available; export uses browser-supported formats.</div></section><div id="art9CropPanel" class="art9-modal" hidden><div class="art9-modal-card"><div class="art9-modal-head"><b>Crop</b><button id="art9CropClose" aria-label="Close crop">×</button></div><div class="art9-crop-options"><button data-crop="free">Free</button><button data-crop="9:16">9:16</button><button data-crop="16:9">16:9</button><button data-crop="1:1">1:1</button><button data-crop="4:5">4:5</button></div><div id="art9CropPreview" class="art9-crop-preview"><div id="art9CropBox" class="art9-crop-box"><span>Crop area</span></div></div><div class="art9-modal-actions"><button id="art9CropReset">Reset</button><button id="art9CropApply" class="primary" onclick="window.HAxBROArtPlus?.applyCrop?.();this.closest('.art9-modal').hidden=true">Apply crop</button></div></div></div><div id="art9MusicPanel" class="art9-modal" hidden><div class="art9-modal-card"><div class="art9-modal-head"><b>Music</b><button id="art9MusicClose" aria-label="Close music">×</button></div><div class="art9-music-list"><button data-music="pulse"><b>Pulse</b><span>Minimal electronic beat · 100 BPM</span></button><button data-music="cinematic"><b>Cinematic</b><span>Ambient rise · 78 BPM</span></button><button data-music="ambient"><b>Ambient</b><span>Soft texture · 64 BPM</span></button></div><label class="art9-upload-music">＋ Choose audio file<input id="art9AudioPicker" type="file" accept="audio/*" hidden></label><div class="art9-modal-actions"><button id="art9MusicRemove">Remove music</button><button id="art9MusicDone" class="primary">Done</button></div></div></div>
+    </main>
+  </div>
+</section>
